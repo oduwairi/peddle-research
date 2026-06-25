@@ -26,8 +26,8 @@ The system is built in three phases. Each maps to packages under `src/draper/`:
 |-------|-------|---------|---------------|--------|
 | 1 — Corpus | Scrape ad libraries | `scraping/`, `collection/` | `scripts/scrape.py`, `scripts/collect.py` | — |
 | 1 — Corpus | Proxy scoring + tiering (KM survival + engagement) | `scoring/` | `scripts/score.py` | `configs/scoring.yaml` |
-| 1 — Corpus | Instruction-backtranslation → SFT pairs | `construction/`, `construction_v2/` | `scripts/construct.py`, `scripts/construct_v2.py` | `configs/construction_v2.yaml` |
-| 2 — Training | QLoRA fine-tune (Qwen3-8B) | `training/` | `scripts/train.py` | `configs/training_v2.yaml` |
+| 1 — Corpus | Instruction-backtranslation → SFT pairs | `construction/` | `scripts/construct.py` | `configs/construction.yaml` |
+| 2 — Training | QLoRA fine-tune (Qwen3-8B) | `training/` | `scripts/train.py` | `configs/training.yaml` |
 | 3 — Eval | Learned scorer (text-only proxy predictor) | `scoring_predictor/` | `scripts/predict.py`, `serve_scoring_predictor.py` | — |
 | 3 — Eval | 2×2 ablation, MAUVE, learned-scorer, validation sets | `evaluation/` | `scripts/eval.py` | `configs/eval.yaml` |
 

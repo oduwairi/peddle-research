@@ -1,35 +1,30 @@
 """Eval pipeline CLI — drives inference, judging, aggregation, reporting.
 
 Usage:
-    # NOTE: After the 2026-05-24 v2-split cutover the active arm-1 roster is
-    # the *_v2 configs (every v2 config name ends in `_v2`). The v1 names
-    # (A/B/C/GOLD, A_pipe/C_pipe) are preserved for re-runs only — flip
-    # test_split_dir back to data/final/test in configs/eval.yaml to use them.
     python scripts/eval.py briefs sample --n 5
-    python scripts/eval.py infer --configs A_v2,B_v2,C_v2 --split test
-    # Arm-2 / pipeline configs are not yet ported to v2 — still v1-only:
+    python scripts/eval.py infer --configs A,B,C --split test
     python scripts/eval.py scenarios run --configs A_pipe,C_pipe
 
     # Normalize — extract clean ad copy BEFORE judging (required).
     # Strips rationale, <think> blocks, emoji-spam, and model-collapse artifacts.
     # Caches under data/eval/inferences_clean/. ~$2 with haiku-4-5 (default),
     # cheaper with --extractor gemini-2.5-flash.
-    python scripts/eval.py normalize --configs A_v2,B_v2,C_v2,GOLD_v2
-    python scripts/eval.py normalize --configs A_v2,B_v2,C_v2,GOLD_v2 --extractor gemini-2.5-flash
+    python scripts/eval.py normalize --configs A,B,C,GOLD
+    python scripts/eval.py normalize --configs A,B,C,GOLD --extractor gemini-2.5-flash
 
     # Live judging (sync, full price):
     python scripts/eval.py judge \
-        --pair A_v2,C_v2 --pair B_v2,C_v2 --pair A_v2,B_v2 \
-        --pair C_v2,GOLD_v2 --pair A_v2,GOLD_v2 --pair B_v2,GOLD_v2 \
+        --pair A,C --pair B,C --pair A,B \
+        --pair C,GOLD --pair A,GOLD --pair B,GOLD \
         --judge claude-sonnet-4-6 --judge gemini-2.5-flash
 
     # Batch judging (50% off, 24h SLA — OpenAI + Anthropic only):
     python scripts/eval.py judge-batch submit \
-        --pair C_v2,GOLD_v2 --judge claude-sonnet-4-6 --run-id may-smoke
+        --pair C,GOLD --judge claude-sonnet-4-6 --run-id may-smoke
     python scripts/eval.py judge-batch status \
-        --run-id may-smoke --pair C_v2,GOLD_v2 --judge claude-sonnet-4-6
+        --run-id may-smoke --pair C,GOLD --judge claude-sonnet-4-6
     python scripts/eval.py judge-batch collect \
-        --run-id may-smoke --pair C_v2,GOLD_v2 --judge claude-sonnet-4-6
+        --run-id may-smoke --pair C,GOLD --judge claude-sonnet-4-6
 
     # Aggregate (reads live or batch judgments — same on-disk shape).
     # run_id is YYYY-MM-DD-<slug>; writes runs/<run_id>/aggregates/.
@@ -37,17 +32,17 @@ Usage:
         --groupby platform,vertical,source_tier --similarity
 
     # Learned-scorer absolute arm (engagement predictions for held-out test set):
-    python scripts/eval.py score --configs A_v2,B_v2,C_v2,GOLD_v2
-    python scripts/eval.py score-summary --configs A_v2,B_v2,C_v2,GOLD_v2 --run-id 2026-05-15-smoke
+    python scripts/eval.py score --configs A,B,C,GOLD
+    python scripts/eval.py score-summary --configs A,B,C,GOLD --run-id 2026-05-15-smoke
 
     # MAUVE distribution-matching arm (requires `uv pip install -e ".[mauve]"`):
-    python scripts/eval.py mauve --configs A_v2,B_v2,C_v2,GOLD_v2
+    python scripts/eval.py mauve --configs A,B,C,GOLD
     python scripts/eval.py mauve-summary --run-id 2026-05-15-mauve-v1
 
     # Reference-overlap arm — BLEU/chrF/ROUGE-L/METEOR/BERTScore vs the GOLD ad
     # + a nearest-neighbor multi-ref pool (requires `uv pip install -e ".[refmetrics]"`):
-    python scripts/eval.py reference-metrics --configs A_v2,B_v2,C_v2,GOLD_v2 --no-bertscore
-    python scripts/eval.py reference-summary --configs A_v2,B_v2,C_v2,GOLD_v2 \
+    python scripts/eval.py reference-metrics --configs A,B,C,GOLD --no-bertscore
+    python scripts/eval.py reference-summary --configs A,B,C,GOLD \
         --run-id 2026-06-03-refmetrics-v2 --groupby platform
     # Grounding: do the metrics predict real Upworthy A/B CTR winners?
     python scripts/eval.py reference-validate --metrics bleu,chrf,rouge_l,meteor --limit 200
@@ -1110,20 +1105,17 @@ def _print_mauve_summary(df: pl.DataFrame) -> None:
 def _infer_gold_config(config_names: list[str], test_split_dir: Path) -> str:
     """Resolve the GOLD config name for the active split.
 
-    Prefers a ``GOLD*`` entry in ``--configs``; otherwise infers from the split
-    directory (v2 splits use ``GOLD_v2``). Avoids the MAUVE command's hardcoded
-    ``"GOLD"``, which silently misses the v2 cleaned-GOLD cache.
+    Prefers a ``GOLD*`` entry in ``--configs``; otherwise returns ``"GOLD"``.
     """
     for name in config_names:
         if is_gold(name):
             return name
-    s = str(test_split_dir)
-    return "GOLD_v2" if ("final_v2" in s or "constructed_v2" in s) else "GOLD"
+    return "GOLD"
 
 
 @app.command("reference-metrics")
 def reference_metrics_cmd(
-    configs: str = typer.Option(..., help="Comma-separated configs (e.g. 'A_v2,B_v2,C_v2')."),
+    configs: str = typer.Option(..., help="Comma-separated configs (e.g. 'A,B,C')."),
     out: Path | None = typer.Option(  # noqa: B008
         None, help="Output dir for per-config parquets (default: cfg.paths.reference_scores_root)."
     ),
@@ -1248,7 +1240,7 @@ def reference_metrics_cmd(
 @app.command("reference-summary")
 def reference_summary(
     configs: str = typer.Option(
-        ..., help="Comma-separated configs to summarize (e.g. 'A_v2,B_v2,C_v2,GOLD_v2')."
+        ..., help="Comma-separated configs to summarize (e.g. 'A,B,C,GOLD')."
     ),
     run_id: str = typer.Option(
         ..., help="Label for this summary (becomes a subdir under aggregates)."

@@ -36,47 +36,6 @@ eval:
       api_key_env: VLLM_API_KEY
       max_tokens: 1024
       temperature: 0.0
-    A_v2:
-      # v2 counterpart of A — same frontier baseline (GPT-5.5 single-shot)
-      # but inferred against the v2 test split (228 briefs in canonical-JSON
-      # form, system prompt = STATIC_SYSTEM_PROMPT). Kept identical to A's
-      # generation knobs so v2-vs-frontier delta is interpretable.
-      label: "GPT-5.5 single-shot (v2 split)"
-      runner: openai
-      model: gpt-5.5
-      max_tokens: 1024
-      temperature: 1.0
-    B_v2:
-      # v2 counterpart of B — base Qwen3-8B via OpenRouter, no FT, on the
-      # v2 test split. Isolates the value-add of the v2 fine-tune over the
-      # base model when both see the structured-JSON brief format.
-      label: "Base Qwen3-8B via OpenRouter (v2 split)"
-      runner: vllm
-      model: qwen/qwen3-8b
-      base_url_env: OPENROUTER_BASE_URL
-      api_key_env: OPENROUTER_API_KEY
-      max_tokens: 1024
-      temperature: 0.0
-    C_v2:
-      # Run #003 v2 fine-tune: Qwen3-8B + LoRA r=64 on the structured-JSON
-      # brief → `<think>` + platform-labeled deliverable dataset. Best
-      # checkpoint (step 250, eval_loss 1.2552) merged + pushed to
-      # oduwairi/draper-v2-qwen/merged-bf16. Counterpart to v1's `C` — same role
-      # (Draper fine-tune, no agent), different training pipeline + briefs.
-      # Naming convention: every v2 config name ends in `_v2`. v1 was
-      # registered prior to 2026-05-24 under names without a suffix
-      # (`A`, `B`, `C`, `GOLD`); v2 mirrors are `A_v2`, `B_v2`, `C_v2`,
-      # `GOLD_v2`. See src/draper/evaluation/README.md.
-      #
-      # max_tokens raised vs C — v2 emits a `<think>` block (~50–300 tokens)
-      # before the deliverable, so 1024 would clip long campaigns.
-      label: "Draper v2 Qwen3-8B fine-tune (r=64, no tools)"
-      runner: vllm
-      model: draper-r16
-      base_url_env: VLLM_BASE_URL
-      api_key_env: VLLM_API_KEY
-      max_tokens: 2048
-      temperature: 0.0
     A_pipe:
       label: "GPT-4o + frontend pipeline (Arm 2)"
       runner: frontend
@@ -120,29 +79,20 @@ eval:
     #   timeout_s: 300
 
   # ---- Pairs to judge ------------------------------------------------------
-  # Arm 1 (single-shot copywriting on 228 held-out v2 briefs).
-  # GOLD_v2 is the v2 sentinel — synthesized at judge time from
-  # Brief.reference_assistant of the v2 test split. Win-rate vs GOLD_v2 is
-  # the absolute-quality anchor: does the model match a real ad that already
-  # worked in the wild? (Tournament pairs A_v2/B_v2/C_v2 are the sanity check.)
-  #
-  # v1 pairs (shipped) — preserved as comment for reference:
-  #   [A, C], [B, C], [A, B], [C, GOLD], [A, GOLD], [B, GOLD]
-  # To re-run v1 evals, flip test_split_dir below back to data/final/test
-  # and restore the v1 pair list.
+  # Arm 1 (single-shot copywriting on the 215 held-out test briefs).
+  # GOLD is the sentinel — synthesized at judge time from
+  # Brief.reference_assistant of the test split. Win-rate vs GOLD is the
+  # absolute-quality anchor: does the model match a real ad that already
+  # worked in the wild?
   arm1_pairs:
-    - [A_v2, C_v2]       # frontier vs v2 FT (tournament)
-    - [B_v2, C_v2]       # base vs v2 FT (controls for FT effect)
-    - [A_v2, B_v2]       # frontier vs base (sanity)
-    - [C_v2, GOLD_v2]    # v2 FT vs real winning ad (reference, headline)
-    - [A_v2, GOLD_v2]    # frontier vs real winning ad (reference baseline)
-    - [B_v2, GOLD_v2]    # base vs real winning ad (reference floor)
+    - [A, C]       # frontier vs fine-tune (tournament)
+    - [B, C]       # base vs fine-tune (controls for FT effect)
+    - [A, B]       # frontier vs base (sanity)
+    - [C, GOLD]    # fine-tune vs real winning ad (reference, headline)
+    - [A, GOLD]    # frontier vs real winning ad (reference baseline)
+    - [B, GOLD]    # base vs real winning ad (reference floor)
   # Arm 2 (URL-anchored full-pipeline scenarios) — no GOLD here, scenarios
-  # have no held-out reference ad to compare against. Pipeline configs are
-  # not yet ported to v2 (A_pipe_v2 / C_pipe_v2 are out of scope for the
-  # current milestone); the v1 pairs below stay for historical aggregate
-  # runs, but firing arm-2 against the v2 test_split will fail until the
-  # pipe configs ship.
+  # have no held-out reference ad to compare against.
   arm2_pairs:
     - [A_pipe, C_pipe]   # frontier pipeline vs FT pipeline (v1 only)
     - [C, C_pipe]        # FT no-tools vs FT pipeline (v1 only)
