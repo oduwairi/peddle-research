@@ -1,0 +1,1266 @@
+# AdFlex filter codes for facebook
+# Auto-generated from adflex_exploration_raw.json
+
+platform: facebook
+select_filters:
+  countries:
+    1000001: Top EN
+    1000002: Tier 1
+    1000003: North America
+    1000004: South America
+    1000005: Europe
+    1000006: Top Asia
+    1000007: Middle East
+    1000008: Africa
+    252: World Wide
+    245: Vietnam
+    73: Poland
+    195: Philippines
+    227: Thailand
+    45: Brazil
+    179: Malaysia
+    116: Hungary
+    32: Bangladesh
+    17: Argentina
+    23: Egypt
+    4: India
+    24: United States
+    9: Greece
+    21: Australia
+    192: Peru
+    34: Canada
+    70: Turkey
+    205: Romania
+    196: Pakistan
+    117: Indonesia
+    16: Italy
+    79: Algeria
+    71: Czech Republic
+    155: Portugal
+    38: Bulgaria
+    97: Georgia
+    249: South Africa
+    189: New Zealand
+    231: Tunisia
+    29: Serbia
+    35: France
+    87: Mexico
+    157: Ukraine
+    128: Cambodia
+    19: Spain
+    74: Germany
+    33: Belgium
+    88: Nepal
+    22: United Kingdom
+    144: Lithuania
+    84: Morocco
+    120: Israel
+    114: Croatia
+    72: Slovakia
+    61: Colombia
+    211: Singapore
+    56: Chile
+    81: Ecuador
+    76: Denmark
+    109: Guatemala
+    18: Netherlands
+    2: United Arab Emirates
+    82: Estonia
+    28: Slovenia
+    60: Taiwan
+    121: Sweden
+    141: Sri Lanka
+    150: Madagascar
+    242: Venezuela
+    62: Costa Rica
+    66: Japan
+    220: El Salvador
+    126: Kenya
+    158: Mongolia
+    146: Latvia
+    44: Bolivia
+    78: Dominican Republic
+    20: Austria
+    203: Qatar
+    165: Malta
+    112: Hong Kong
+    27: Bosnia and Herzegovina
+    207: Saudi Arabia
+    69: Cyprus
+    90: Finland
+    119: Ireland
+    156: Norway
+    122: Iceland
+    83: Iraq
+    152: Macedonia
+    125: Jordan
+    59: South Korea
+    113: Honduras
+    36: Switzerland
+    238: Uruguay
+    186: Nicaragua
+    10: Armenia
+    149: Moldova
+    191: Panama
+    137: Laos
+    199: Puerto Rico
+    233: Trinidad and Tobago
+    202: Paraguay
+    251: "C\xF4te d'Ivoire"
+    134: Kuwait
+    147: Libya
+    26: Azerbaijan
+    168: Zimbabwe
+    118: Myanmar
+    30: Kosovo
+    161: Mauritius
+    200: Palestine
+    215: Senegal
+    15: Angola
+    63: Montenegro
+    47: Bhutan
+    80: Lebanon
+    48: Botswana
+    190: Oman
+    50: Belize
+    124: Jamaica
+    185: Nigeria
+    169: Antarctica
+    8: Albania
+    206: Rwanda
+    193: French Polynesia
+    182: New Caledonia
+    39: Bahrain
+    99: Ghana
+    235: Tanzania
+    94: Faroe Islands
+    236: Uganda
+    1: Andorra
+    58: China
+    3: Afghanistan
+    166: Maldives
+    67: Cape Verde
+    43: Brunei
+    216: Somalia
+    53: Republic of the Congo
+    25: Aruba
+    31: Barbados
+    181: Namibia
+    145: Luxembourg
+    95: Gabon
+    250: Zambia
+    91: Fiji
+    57: Cameroon
+    49: Belarus
+    204: "R\xE9union"
+    159: Macau
+    167: Malawi
+    180: Mozambique
+    46: The Bahamas
+    6: Antigua
+    139: St. Lucia
+    104: Guadeloupe
+    239: Uzbekistan
+    41: Benin
+    89: Ethiopia
+    226: Togo
+    136: Kazakhstan
+    111: Guyana
+    138: Yemen
+    217: Suriname
+    160: Northern Mariana Islands
+    194: Papua New Guinea
+    208: Solomon Islands
+    37: Burkina Faso
+    54: Democratic Republic of the Congo
+    143: Lesotho
+    96: Grenada
+    162: Martinique
+    174: Guam
+    241: Saint Vincent and the Grenadines
+    170: American Samoa
+    172: Bouvet Island
+    77: Dominica
+    75: Djibouti
+    222: Swaziland
+    221: Syria
+    244: US Virgin Islands
+    115: Haiti
+    135: Cayman Islands
+    163: Mauritania
+    232: Tonga
+    101: Greenland
+    64: Russia
+    153: Mali
+    224: Chad
+    132: Saint Kitts and Nevis
+    103: Guinea
+    248: Samoa
+    243: British Virgin Islands
+    173: Guernsey
+    42: Bermuda
+    11: "Cura\xE7ao"
+    214: Sierra Leone
+    183: Niger
+    209: Seychelles
+    102: The Gambia
+    151: Marshall Islands
+    142: Liberia
+    40: Burundi
+    178: Jersey
+    223: Turks and Caicos Islands
+    176: Isle Of Man
+    154: Timor-Leste
+    127: Kyrgyzstan
+    218: South Sudan
+    131: Mayotte
+    129: Kiribati
+    219: Sao Tome and Principe
+    110: Guinea-Bissau
+    246: Vanuatu
+    100: Gibraltar
+    13: Sint Maarten
+    130: Comoros
+    7: Anguilla
+    98: French Guiana
+    107: Equatorial Guinea
+    123: San Marino
+    234: Tuvalu
+    52: Central African Republic
+    197: Saint Pierre and Miquelon
+    201: Palau
+    55: Cook Islands
+    65: Cuba
+    140: Liechtenstein
+    12: Bonaire, Sint Eustatius and Saba
+    228: Tajikistan
+    93: Federated States of Micronesia
+    164: Montserrat
+    230: Turkmenistan
+    184: Norfolk Island
+    106: "Saint Barth\xE9lemy"
+    212: Saint Helena
+  behaviors:
+    2729: Travel
+    2737: Mobile Device User
+    3102: Soccer
+    4026: Digital Activities
+    4107: Purchase behavior
+    4196: Expats
+    28199: Consumer Classification
+    30195: New Active Business
+    32507: Mobile Device User/Device Use Time
+    33213: More Categories
+    60548: Anniversary
+  gender:
+    9886: Any
+    9888: Male
+    9887: Female
+  target_languages:
+    254: English
+    284: Thai
+    289: Chinese (Traditional)
+    287: Chinese
+    331: Vietnamese
+    262: Spanish
+    266: French
+    276: Polish
+    334: Arabic
+    285: Turkish
+    268: Hungarian
+    260: German
+    318: Malay
+    277: Portuguese
+    274: Dutch
+    280: Russian
+    269: Italian
+    306: Greek
+    344: Chinese (Simplified)
+    335: Hebrew
+    270: Japanese
+    310: Indonesian
+    325: Filipino
+    279: Romanian
+    256: Czech
+    329: Ukrainian
+    302: Estonian
+    295: Bengali
+    281: Slovak
+    298: Croatian
+    271: Korean
+    297: Bulgarian
+    316: Lithuanian
+    332: Khmer
+    323: Serbian
+    315: Latvian
+    305: Georgian
+    259: Danish
+    283: Swedish
+    290: Afrikaans
+    282: Slovenian
+    308: Hindi
+    265: Finnish
+    336: Urdu
+    321: Nepali
+    309: Icelandic
+    339: Sinhala
+    272: "Norwegian Bokm\xE5l"
+    320: Mongolian
+    326: Tamil
+    328: Malayalam
+    296: Bosnian
+    317: Macedonian
+    273: Norwegian Nynorsk
+    291: Albanian
+    255: Catalan
+    257: Cebuano
+    327: Telugu
+    293: Azerbaijani
+    319: Marathi
+    324: Swahili
+    292: Armenian
+    294: Belarusian
+    322: Punjabi
+    337: Persian
+    313: Kannada
+    330: Uzbek
+    312: Javanese
+    307: Gujarati
+    314: Kazakh
+    338: Pashto
+    267: Galician
+    311: Irish
+    303: Faroese
+    264: Guarani
+    261: Basque
+    286: Kurdish (Kurmanji)
+    275: Frisian
+    301: Esperanto
+    333: Tajik
+  placements:
+    691: Feed
+    692: Right Column
+    697: Marketplace
+    693: Video Feed
+    698: Search
+    696: In Stream
+  format:
+    image: Image
+    video: Video
+    carousel: Carousel
+  languages:
+    513: English
+    580: Spanish
+    595: Vietnamese
+    495: Arabic
+    491: Unknown
+    566: Portuguese
+    565: Polish
+    518: French
+    588: Thai
+    531: Hungarian
+    500: Bengali
+    523: Greek
+    522: German
+    589: Turkish
+    536: Italian
+    506: Chinese (Simplified)
+    568: Romanian
+    534: Indonesian
+    510: Czech
+    509: Croatian
+    521: Georgian
+    512: Dutch
+    502: Bulgarian
+    591: Ukrainian
+    541: Khmer
+    528: Hebrew
+    549: Lithuanian
+    537: Japanese
+    577: Slovak
+    572: Serbian
+    511: Danish
+    578: Slovenian
+    583: Swedish
+    516: Filipino
+    569: Russian
+    20345: Chinese
+    515: Estonian
+    553: Malay
+    558: Mongolian
+    517: Finnish
+    548: Latvian
+    560: Nepali
+    561: Norwegian
+    592: Urdu
+    543: Korean
+    552: Malagasy
+    529: Hindi
+    532: Icelandic
+    551: Macedonian
+    576: Sinhala
+    501: Bosnian
+    546: Lao
+    493: Albanian
+    559: Myanmar (Burmese)
+    503: Catalan
+    496: Armenian
+    497: Azerbaijani
+    514: Esperanto
+    582: Swahili
+    504: Cebuano
+    544: Kurdish (Kurmanji)
+    492: Afrikaans
+    564: Persian
+    557: Marathi
+    520: Galician
+    585: Tamil
+    498: Basque
+    554: Malayalam
+    555: Maltese
+    587: Telugu
+    563: Pashto
+    579: Somali
+    547: Latin
+    1903: Javanese
+    594: Uzbek
+    540: Kazakh
+    499: Belarusian
+    524: Gujarati
+    1956: Norwegian Nynorsk
+    574: Shona
+    494: Amharic
+    550: Luxembourgish
+    1918: Breton
+    535: Irish
+    539: Kannada
+    1905: Faroese
+    1933: Interlingua
+    1904: Tswana
+    581: Sundanese
+    567: Punjabi
+    542: Kinyarwanda
+    1959: Occitan
+    1911: Assamese
+    525: Haitian Creole
+    596: Welsh
+    1924: Divehi
+    600: Zulu
+    575: Sindhi
+    505: Chichewa
+    586: Tatar
+    519: Frisian
+    597: Xhosa
+    598: Yiddish
+    573: Sesotho
+    1980: Wolof
+    545: Kyrgyz
+    562: Odia (Oriya)
+    526: Hausa
+    571: Scots Gaelic
+    556: Maori
+    584: Tajik
+    1949: Lingala
+    1909: Akan
+    1964: Quechua
+    1961: Oromo
+    599: Yoruba
+    533: Igbo
+    1974: Tsonga
+    1916: Bambara
+    1947: Ganda
+    1979: Walloon
+    1967: Sanskrit
+    1910: Aragonese
+    593: Uyghur
+    508: Corsican
+    1929: Guarani
+    590: Turkmen
+    1913: Aymara
+    1965: Romansh
+    507: Chinese (Traditional)
+    527: Hawaiian
+    1972: Tigrinya
+    530: Hmong
+    570: Samoan
+  type_call_to_actions:
+    1277: Send Message
+    1260: Learn More
+    1245: Shop Now
+    1286: Order Now
+    1261: Sign Up
+    1257: Book Now
+    1268: Apply Now
+    1262: Watch More
+    1256: Download
+    1271: Get Offer
+    1244: Like Page
+    1246: Play Game
+    1284: Get Quote
+    1317: Send Whatsapp Message
+    1280: Subscribe
+    1285: Contact Us
+    1279: Donate Now
+    1274: Get Directions
+    1272: Buy Tickets
+    1278: Message
+    1275: Buy
+    1258: Listen Now
+    1300: See Menu
+    1304: Get Showtimes
+    1299: Request Time
+    1293: Register Now
+    1263: No Button
+    1270: Buy Now
+    1891: Inquire Now
+    1266: Call Now
+    1309: Claim Offer
+    1898: Get Promotions
+    1324: See More
+    1254: Install Now
+    1334: Get Access
+    1894: Send Instagram Message
+    1320: Visit Instagram Profile
+    1243: Open Link
+    1314: Interested
+    1902: Play
+    1298: Save
+    1890: Get Updates
+    1282: Sell Now
+    1276: See Details
+    1287: Start Order
+    1249: Call
+    1319: Get Tickets
+    1321: Follow
+    1901: Explore More
+    1247: Install App
+    1269: Contact
+    1344: Try In Camera
+    1248: Use App
+    1288: Add To Cart
+    1305: Try It
+    1291: Vote Now
+    1259: Watch Video
+    1346: Get Started
+    1250: Free Call
+    1331: Remind Me
+    1303: Search
+    1311: Bet Now
+    1323: Preregister
+    1328: Check Availability
+    1899: Visit Profile
+    1290: Record Now
+    1345: Play Game On Facebook
+    1252: Get App
+    1335: Buy Gift Card
+    1330: Find Your Groups
+  owner_verified:
+    '1': Verified
+  cms:
+    10837: WordPress
+    10515: Adobe Experience Manager
+    10587: Drupal
+    10566: Contentful
+    10834: Wix
+    10631: HubSpot CMS Hub
+    10769: Sitecore
+    10793: Strapi
+    10804: Tilda
+    10792: Storyblok
+    10781: Skolengo
+    10644: Joomla
+    10789: Squarespace
+    10734: Prismic
+    10809: TYPO3 CMS
+    10647: Kentico CMS
+    10574: Craft CMS
+    10811: Umbraco
+    10545: Builder.io
+    10754: Sanity
+    10692: Odoo
+    10702: Optimizely Content Management
+    10521: Amplience
+    10659: Liferay
+    10582: Directus
+    10579: DatoCMS
+    10511: 1C-Bitrix
+    10651: Kontent.ai
+    10736: Progress Sitefinity
+    10691: October CMS
+    10588: Duda
+    10676: Microsoft SharePoint
+    10722: Pimcore
+    10530: Backdrop
+    10536: Bloomreach
+    10617: Google Sites
+    10569: CoreMedia Content Cloud
+    10585: DNN
+    10791: Statamic
+    10770: Sitecore Experience Platform
+    10790: Squiz Matrix
+    10825: WebNode
+    10615: GoDaddy Website Builder
+    10526: Arc XP
+    10560: Concrete CMS
+    10815: Varbase
+    10824: Weblium
+    10605: ExpressionEngine
+    10831: Weebly
+    10662: Live Story
+    10735: ProcessWire
+    10627: HCL Digital Experience
+    10548: ButterCMS
+    10797: Sulu
+    10766: Silverstripe
+    10541: Botble CMS
+    10780: Skilldo
+    10562: Contao
+    10590: Dynamicweb
+    10759: SDL Tridion
+    10678: MODX
+    10672: MemberStack
+    10705: Orchard Core
+    10613: Ghost
+    10645: JouwWeb
+    10777: Sitevision CMS
+    10542: Brightspot
+    10607: eZ Publish
+    10523: ApostropheCMS
+    10832: WHMCS
+    10614: Gnuboard
+    10555: CloudCannon
+    10730: Plone
+    10643: Jimdo
+    10820: Wagtail
+    10806: TN Express Web
+    10733: Prepr
+    10677: Milestone CMS
+    10703: Oracle Content Management
+    10686: NationBuilder
+    10694: Omni CMS
+    10687: Neos CMS
+    10539: Bolt CMS
+    10714: Phoenix Site
+    10623: Griddo
+    10584: DM Polopoly
+    16581: Proximis Unified Commerce
+    10741: Quintype
+    10680: Mono.net
+    10772: Sitefinity
+    10632: Ibexa DXP
+    10675: microCMS
+    10819: Voog.com Website Builder
+    10538: BoldGrid
+    10564: Contensis
+    10620: GraphCMS
+    10821: webEdition
+    10533: Bentobox
+    10661: Lithium
+    10611: Fork CMS
+    10813: Unicorn Platform
+    10803: Tiki Wiki CMS Groupware
+    10725: Pixieset Website
+    10757: Scorpion
+    10636: ImpressPages
+    10610: FlexCMP
+    10762: Shift4Shop
+    10788: SPIP
+    10823: Weblication
+    10621: Grav
+    10576: CrownPeak
+    10557: CMS Made Simple
+    10578: DataLife Engine
+    10698: OpenCms
+    10807: TownNews
+    10570: Cosmic
+    10794: Strato Website
+    10681: MotoCMS
+    10739: PyroCMS
+    10726: Pixnet
+    10764: Shuttle
+    10522: Antee IPO
+    10609: Flazio
+    10786: Solodev
+    10774: SiteManager
+    10817: Vignette
+    10653: Kooboo CMS
+    10758: Scrivito
+    10567: Contentstack
+    10575: Cratejoy
+    10697: OpenCities
+    10552: Chorus
+    10601: ERPNext
+    10626: Hatena Blog
+    10690: Nukeviet CMS
+    10634: imperia CMS
+    10670: Megagroup CMS.S3
+    10513: a-blog cms
+    10664: LocomotiveCMS
+    10731: Popmenu
+    10799: Telescope
+    10816: Vigbo
+    10663: LiveStreet CMS
+    10783: Smartstore Page Builder
+    10641: Jahia DX
+    10728: PlatformOS
+    10805: Tistory
+    10773: Siteglide
+    10679: Moguta.CMS
+    10765: SIDEARM Sports
+    10746: Reactive
+    10742: Rayo
+    10559: Coaster CMS
+    10818: VIVVO
+    10648: Koala Framework
+    10801: Thelia
+    10595: Ektron CMS
+    10751: Roadiz CMS
+    10753: Rubedo
+    10583: Django CMS
+    10592: e107
+    10596: Elcom
+    10568: Corebine
+    10580: DedeCMS
+    10600: EPiServer
+    10699: OpenElement
+    10829: WebZi
+    10840: XOOPS
+    10655: Lede
+    10527: Arya CMS
+    10528: AsciiDoc
+    10535: BigTree CMS
+    10554: ClientXCMS
+    10594: eClass
+    10599: Enjin CMS
+    10603: eSyndiCat
+    10658: Lieferando
+    10693: Omeka
+    10708: Pagevamp
+    10717: phpCMS
+    10729: Pligg
+    10732: Posterous
+    10749: REDAXO
+    10798: Suncel
+    10802: TiddlyWiki
+    10814: Ushahidi
+    10700: OpenNemas
+    10646: K-Sup
+    10738: PubLive
+    10591: E-monsite
+    10543: Brownie
+    10616: Google My Business
+    10642: Jalios
+    10673: Methode
+    10743: RBS Change
+    10516: Adobe Experience Manager Franklin
+    10841: XpressEngine
+    10684: Mura CMS
+    10822: WebGUI
+    10767: "Simpl\xE9bo"
+    10612: GetSimple CMS
+    10532: Batflat
+    10830: Webzie
+    10812: UMI.CMS
+    10606: eZ Platform
+    10624: GX WebManager
+    10704: Orchard CMS
+    10654: Kotisivukone
+    10779: SixCMS
+    10512: 3dCart
+    10721: phpwind
+    10752: RockRMS
+    10795: Strikingly
+    10682: Movable Type
+    10800: Textpattern CMS
+    10549: Caisy
+    10696: onpublix
+    10740: Quick.CMS
+    10544: BrowserCMS
+    10718: PHPFusion
+    10745: React Bricks
+    10519: Ametys
+    10565: ContentBox
+    10550: Cendyn
+    10707: Pagekit
+    10713: Percussion
+    10716: PHP-Nuke
+    10720: phpSQLiteCMS
+    10744: RCMS
+    10546: Business Catalyst
+    10593: Ebasnet
+    10525: Arc Publishing
+    10563: Contenido
+    10778: Sivuviidakko
+    10836: Woltlab Community Framework
+    10551: Chameleon system
+    10556: Cloudrexx
+    10618: govCMS
+    10622: Green Valley CMS
+    10571: Cotonti
+    10619: Graffiti CMS
+    10724: pirobase CMS
+    10747: ReadMe
+    10572: CPG Dragonfly
+    10639: InstantCMS
+    10669: MaxSite CMS
+    10711: Paymenter
+    10715: PhotoShelter
+    10760: SeamlessCMS
+    10775: Sitepark IES
+    10776: Sitepark InfoSite
+    10784: sNews
+    10826: Website Creator
+  funnels:
+    11210: ClickFunnels
+    11212: Instapage
+    11211: GetResponse
+    11213: Kartra
+    11214: Keap
+  ecommerce:
+    10877: Cart Functionality
+    11100: Shopify
+    11190: WooCommerce
+    10999: Magento
+    10854: Amazon Webstore
+    11176: VTEX
+    11054: PrestaShop
+    11073: Salesforce Commerce Cloud
+    11151: Tiendanube
+    10940: Fourthwall
+    11102: Shopline
+    11188: Wix eCommerce
+    11203: YouCan
+    11078: SAP Commerce Cloud
+    11029: OpenCart
+    11111: Shoptet
+    11101: Shoplazza
+    11131: Squarespace Commerce
+    11182: Webflow Ecommerce
+    10911: Easy Orders
+    11166: Unas
+    11096: Shoper
+    10981: Kajabi
+    10900: CS Cart
+    10951: Gomag
+    10955: Haravan
+    11149: Ticimax
+    10865: BigCommerce
+    10962: Ikas
+    11109: Shoprenter
+    11023: Nuvemshop
+    16608: 1C-Bitrix
+    10961: IdoSell Shop
+    11021: nopCommerce
+    10956: HCL Commerce
+    11011: MSHOP
+    11156: Tray
+    16619: Pimcore
+    10876: Cafe24
+    10885: CloudCart
+    11094: ShopBase
+    11152: Tiktak Pro
+    11112: Shopware
+    10998: Magazord
+    10908: Drupal Commerce
+    10898: Craft Commerce
+    10994: Loja Integrada
+    10918: Ecwid
+    10935: Fenicio
+    11135: Storeino
+    10966: Intershop
+    11032: Oracle Commerce Cloud
+    10869: Bizweb
+    16626: Weblium
+    10912: EasyDigitalDownloads
+    10913: EasyStore
+    11031: Oracle Commerce
+    11139: SummerCart
+    10978: Jumpseller
+    10905: Dokan
+    11075: Salla
+    11020: Next Total
+    11037: osCommerce
+    11030: Optimizely Commerce
+    10991: Lightspeed eCom
+    10873: Botble CMS
+    10880: Centra
+    10964: Imweb
+    16612: Dynamicweb
+    11117: Sky-Shop
+    11172: Vnda
+    10970: Irroba
+    11206: Zid
+    11099: ShopGold
+    10847: Accesso
+    11144: TakeDrop
+    11041: OXID eShop Enterprise Edition
+    11199: Yampi Virtual store
+    11069: Robin
+    11018: Neto
+    11148: ThriveCart
+    10890: Commerce Server
+    10968: Inveon
+    10945: Fynd Platform
+    10894: commercetools
+    11039: OXID eShop
+    10977: JTL Shop
+    11061: Quickbutik
+    10927: eZ Publish
+    10954: Gumroad
+    10893: Commercelayer
+    11124: SoteShop
+    11141: Sylius
+    10985: Klarna Checkout
+    10992: Linx Commerce
+    10910: e-Shop Commerce
+    10979: Justo
+    11147: THG Ingenuity
+    11003: Mercado Shops
+    11044: Pattern by Etsy
+    11186: Wikinggruppen
+    11191: Workarea
+    11126: Spree
+    11022: novomind iSHOP
+    11013: MyCashFlow
+    11164: Ueeshop
+    11019: NetSuite
+    11130: Square Online
+    10919: eDokan
+    11051: Podia
+    10845: Abicart
+    11133: Storeden
+    10909: Dukaan
+    11058: PureCars
+    11057: Proximis Unified Commerce
+    11015: Nacelle
+    10874: Bsale
+    11088: Sellingo
+    10987: KobiMaster
+    11095: Shopcada
+    10917: EcForce
+    10875: BSmart
+    11121: Snipcart
+    11048: plentymarkets
+    16625: Voog.com Website Builder
+    11128: Spryker
+    11049: plentyShop LTS
+    10907: Drubbit
+    10971: J2Store
+    10941: Foxy.io
+    10942: Freshop
+    10950: GoDaddy Online Store
+    10924: ePages
+    11179: wBuy
+    10989: KQS.store
+    11017: NEO - Omnichannel Commerce Platform
+    11040: OXID eShop Community Edition
+    11000: MakeShop
+    11178: wap.store
+    10934: Fbits
+    11171: Visualsoft
+    10983: Kibo Commerce
+    11012: My Food Link
+    11086: Selless
+    11193: X-Cart
+    11118: Smartstore
+    11120: SmartWeb
+    11122: SoftTr
+    10915: EC-CUBE
+    10946: Gambio
+    11107: Shoppub
+    11008: Mobify
+    11187: WineDirect
+    10975: JoomShopping
+    16622: Shift4Shop
+    11092: Shopaholic
+    11177: Vue Storefront
+    10904: DigitalRiver
+    11168: Vendre
+    11140: Swell
+    10889: ColorMeShop
+    10864: Big Cartel
+    10944: Future Shop
+    10892: Commerce7
+    11183: Websale
+    10862: Base
+    10879: CCV Shop
+    11042: OXID eShop Professional Edition
+    11060: Quick.Cart
+    11033: Orckestra
+    11006: Miva
+    11157: TRISOshop
+    11053: Powergap
+    10895: Convertr
+    10866: BigCommerce B2B Edition
+    10960: Ideasoft
+    11062: QuickSell
+    10993: LogiCommerce
+    11081: Scalefast
+    10884: Cleverbridge
+    11115: Simplo7
+    11001: MakeShopKorea
+    10856: AptusShop
+    10949: Global-e
+    11077: Sana Commerce
+    11014: MyOnlineStore
+    11134: StoreHippo
+    11189: WiziShop
+    16611: Cratejoy
+    11059: PWA Studio
+    10914: ebisumart
+    11056: Proximis
+    10842: 24nettbutikk
+    11200: Yepcomm
+    11038: Oxatis
+    11201: YNAP Ecommerce
+    10965: inSales
+    10973: Jetshop
+    11089: Sellix
+    11138: Subbly
+    11123: Solusquare OmniCommerce Cloud
+    11170: VirtueMart
+    11025: ocStore
+    10849: Aero Commerce
+    11184: Webx
+    10899: Crystallize
+    10952: GrandNode
+    11162: Ubercart
+    11154: TotalCode
+    11196: Xretail
+    11198: Yahoo! Ecommerce
+    11209: Zozo
+    10980: k-eCommerce
+    11185: Welcart
+    11205: Zen Cart
+    11068: RND
+    10903: Digital Showroom
+    11173: Volusion
+    10920: EKM
+    11163: Ubiliz
+    11202: Yoori
+    10959: hyva
+    10996: Loja Virtual
+    11132: StackCommerce
+    11065: RedCart
+    10963: Iluria
+    11108: Shoppy
+    11197: xtCommerce
+    11047: PlatinMarket
+    11004: Microsoft Dynamics 365 Commerce
+    11063: Rain
+    11137: stores.jp
+    16616: Moguta.CMS
+    16621: Reactive
+    11165: UltraCart
+    10878: Cart.com
+    11125: SpiritShop
+    10930: Fast Checkout
+    11072: Salesfloor
+    11110: Shoprunner
+    11024: Ochanoko
+    11087: Sellfy
+    11046: Pixieset Store
+    11035: OrderYOYO
+    11091: Sharetribe
+    11127: Spring for creators
+    11180: Web Shop Manager
+    16624: Thelia
+    11142: T-Soft
+    11207: Zoey
+    10852: Akilli Ticaret
+    10846: ABOUT YOU Commerce Suite
+    10986: KMK
+    11050: Plug&Pay
+    11084: Selldone
+    10851: AfterBuy
+    10883: City Hive
+    11045: PinnacleCart
+    11174: Voracio
+    10976: JShop
+    11043: Parttrap ONE
+    10936: Flow
+    10891: Commerce.js
+    11208: Zonos
+    10860: Avangate
+    10871: Bootic
+    10888: Cococart
+    11098: Shopfa
+    10861: Azoya
+    10896: Correos Ecommerce
+    10948: GetMeAShop
+    10974: Jibres
+    10982: Kamva
+    11064: Rakuten Digital Commerce
+    11067: Remarkable Commerce
+    11071: Saleor
+    11080: Sazito
+    11082: SearchFit
+    11083: Sellacious
+    11093: Shopatron
+    11103: Shoplo
+    11153: TomatoCart
+    11181: Webasyst Shop-Script
+    11113: ShopWired
+    10988: Kooomo
+    16609: Brownie
+    16620: RBS Change
+    10925: Estore Shopserve
+    10953: GrocerKey
+    11116: Sirclo
+    10887: CloudSuite
+    10947: GEOvendas
+    10872: Borderfree
+    16627: Webzie
+    11104: Shopmatic
+    11175: VP-ASP
+    10843: 42stores
+    10957: Hero
+    11119: Smartstore biz
+    10932: Fastspring
+    10943: FurnitureDealer
+    10995: Loja Mestre
+    11076: Saly
+    10901: CubeCart
+    10850: Afosto
+    10858: ARI Network Services
+    11161: Typof
+    11143: T1 Paginas
+    10882: Checkfront
+    10990: Lazada
+    11146: The Hut Group
+    10937: Food-Ordering.co.uk
+    11194: Xanario
+    11158: Tritac Katana Commerce
+    11169: vibecommerce
+    10931: Fastcommerce
+    11129: Squadded
+    10969: iPresta
+    11105: Shoporama
+    16610: Chameleon system
+    11036: OroCommerce
+    11192: WorldShopping
+    10844: 4Partners CMS
+    10857: Arastta
+    10868: Bikayi
+    10972: JET Enterprise
+    10997: Loja2
+    11002: Matajer
+    11005: Miestro
+    11009: Modified
+    11055: Projesoft
+    16617: Paymenter
+    16618: PhotoShelter
+  affiliate:
+    10470: AWIN
+    10481: GoAffPro
+    10482: Impact
+    10493: Rakuten
+    10491: Post Affiliate Pro
+    10462: Admitad
+    10495: RevenueHunt
+    10509: Webgains
+    10487: Optimise
+    10503: Tapfiliate
+    10480: FirstPromoter
+    10506: Tradedoubler
+    10466: Affiliatly
+    10497: Rewardful
+    10494: Refersion
+    10490: Pepperjam
+    10463: Affilae
+    10500: Skimlinks
+    10460: A8.net
+    10502: Systeme.io
+    10471: Booking.com
+    10477: Duel
+    10461: AccessTrade
+    10505: Tolt
+    10464: Affiliate B
+    10472: Clickbank
+    10486: Narrativ
+    10508: ValueCommerce
+    10474: Digistore24
+    10485: Moshimo
+    10501: Sovrn//Commerce
+    10489: PayKickStart
+    10507: Upfluence
+    10498: ShoutOut
+    10488: Partnerize
+    10465: Affiliate Future
+    10468: Affilo
+    10469: Amazon Associates
+    10504: Tiqets
+    10476: Dr.Cash
+    10492: Pretty Links
+    10484: LinkMink
+    10475: Dovetale
+    10496: RevenueHut
+    10499: SirenGroup
+    10473: CPABuild
+    10510: Webolytics
+    10467: Affilio
+    10478: eBay Partner Network
+    10479: FinanceAds
+    10483: JANet
+  tracker:
+    11215: AdsBridge
+    11224: VOLUUM
+    11217: BeMob
+    11218: Binom
+    11222: REDTRACK
+    11220: FunnelFlux
+    11216: Appsflyer
+    11219: CPV Lab
+    11223: thrivetracker
+  arbitrages:
+    19488: Google Display
+    19487: Google Search
+range_filters:
+  target_age:
+    min: 13
+    max: 65
+    infinite: true
+  seen_counts:
+    min: 0
+    max: 999
+    infinite: true
+  days_active:
+    min: 0
+    max: 365
+    infinite: true
+  owner_followers:
+    min: 0
+    max: 1000000
+    infinite: true
+  reaction:
+    min: 0
+    max: 9000
+    infinite: true
+  comments_count:
+    min: 0
+    max: 1000
+    infinite: true
+  views:
+    min: 0
+    max: 99000
+    infinite: true
+  share:
+    min: 0
+    max: 1000
+    infinite: true
+  domain_age:
+    min: 1
+    max: 1000
+    infinite: true
+  domain_monthly_traffic:
+    min: 1000
+    max: 1000000
+    infinite: true
+orderings:
+  updated_at: Newest
+  oldest: Oldest
+  popularity: Highest Engagement
+  most_relevant: Most Relevant
+  seen_counts: Most Seen
+  days_active: Longest Running
+  domain.traffic: Web Traffic

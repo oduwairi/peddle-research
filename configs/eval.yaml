@@ -1,0 +1,222 @@
+# Eval pipeline config — pairwise LLM-as-judge across the 4-config ablation.
+# Loaded by draper.evaluation.config.EvalConfig.from_yaml().
+# Background: docs/training/TRAINING_RUN_002_POSTMORTEM.md, the plan in
+# ~/.claude/plans/ok-training-done-docs-project-implementa-quiet-acorn.md.
+
+eval:
+  # ---- Configs under test --------------------------------------------------
+  # Each config is one (base_url, api_key_env, model_id, runner_type) triple.
+  # `runner` selects the Python runner class:
+  #   - openai: direct call to OpenAI-compat endpoint (hosted) — config A
+  #   - vllm:   direct call to local vLLM (no tools, single-shot) — B, C
+  #   - frontend: POST to /api/eval/run with the full pipeline — A_pipe, D
+  configs:
+    A:
+      label: "GPT-5.5 (single-shot)"
+      runner: openai
+      model: gpt-5.5
+      max_tokens: 1024
+      temperature: 1.0
+    B:
+      label: "Base Qwen3-8B (no fine-tune)"
+      # Reuses the vllm runner — it's just an OpenAI-compat client. We
+      # point it at OpenRouter so the Modal vLLM endpoint stays
+      # dedicated to the merged FT model (config C).
+      runner: vllm
+      model: qwen/qwen3-8b
+      base_url_env: OPENROUTER_BASE_URL
+      api_key_env: OPENROUTER_API_KEY
+      max_tokens: 1024
+      temperature: 0.0
+    C:
+      label: "Fine-tuned 7B (no tools)"
+      runner: vllm
+      model: draper-r16
+      base_url_env: VLLM_BASE_URL
+      api_key_env: VLLM_API_KEY
+      max_tokens: 1024
+      temperature: 0.0
+    A_v2:
+      # v2 counterpart of A — same frontier baseline (GPT-5.5 single-shot)
+      # but inferred against the v2 test split (228 briefs in canonical-JSON
+      # form, system prompt = STATIC_SYSTEM_PROMPT). Kept identical to A's
+      # generation knobs so v2-vs-frontier delta is interpretable.
+      label: "GPT-5.5 single-shot (v2 split)"
+      runner: openai
+      model: gpt-5.5
+      max_tokens: 1024
+      temperature: 1.0
+    B_v2:
+      # v2 counterpart of B — base Qwen3-8B via OpenRouter, no FT, on the
+      # v2 test split. Isolates the value-add of the v2 fine-tune over the
+      # base model when both see the structured-JSON brief format.
+      label: "Base Qwen3-8B via OpenRouter (v2 split)"
+      runner: vllm
+      model: qwen/qwen3-8b
+      base_url_env: OPENROUTER_BASE_URL
+      api_key_env: OPENROUTER_API_KEY
+      max_tokens: 1024
+      temperature: 0.0
+    C_v2:
+      # Run #003 v2 fine-tune: Qwen3-8B + LoRA r=64 on the structured-JSON
+      # brief → `<think>` + platform-labeled deliverable dataset. Best
+      # checkpoint (step 250, eval_loss 1.2552) merged + pushed to
+      # oduwairi/draper-v2-qwen/merged-bf16. Counterpart to v1's `C` — same role
+      # (Draper fine-tune, no agent), different training pipeline + briefs.
+      # Naming convention: every v2 config name ends in `_v2`. v1 was
+      # registered prior to 2026-05-24 under names without a suffix
+      # (`A`, `B`, `C`, `GOLD`); v2 mirrors are `A_v2`, `B_v2`, `C_v2`,
+      # `GOLD_v2`. See src/draper/evaluation/README.md.
+      #
+      # max_tokens raised vs C — v2 emits a `<think>` block (~50–300 tokens)
+      # before the deliverable, so 1024 would clip long campaigns.
+      label: "Draper v2 Qwen3-8B fine-tune (r=64, no tools)"
+      runner: vllm
+      model: draper-r16
+      base_url_env: VLLM_BASE_URL
+      api_key_env: VLLM_API_KEY
+      max_tokens: 2048
+      temperature: 0.0
+    A_pipe:
+      label: "GPT-4o + frontend pipeline (Arm 2)"
+      runner: frontend
+      base_url_env: EVAL_FRONTEND_A_URL
+      token_env: EVAL_SERVICE_TOKEN
+      timeout_s: 300
+    C_pipe:
+      label: "Fine-tuned 7B + frontend pipeline (Arm 2)"
+      # Writer is Draper-r16 on Modal vLLM; orchestrator is gpt-5.4-mini.
+      # Naming: C is raw FT (Draper alone, no agent), C_pipe is C + agent.
+      runner: frontend
+      base_url_env: EVAL_FRONTEND_C_PIPE_URL
+      token_env: EVAL_SERVICE_TOKEN
+      timeout_s: 300
+    B_pipe:
+      label: "Base Qwen3-8B + frontend pipeline (RQ2 offline 2x2)"
+      # Same frontend agent loop as C_pipe, but the writer (MODEL_ID) on
+      # this deployment is qwen/qwen3-8b via OpenRouter. Orchestrator stays
+      # gpt-5.4-mini for parity with C_pipe — Draper is not good at agent
+      # workflows, neither is base Qwen.
+      runner: frontend
+      base_url_env: EVAL_FRONTEND_B_PIPE_URL
+      token_env: EVAL_SERVICE_TOKEN
+      timeout_s: 300
+
+    # ---- Agent-architecture variants -------------------------------------
+    # To iterate the frontend agent without overwriting baseline data, add
+    # a new config whose name carries an `@<variant_slug>` suffix. The
+    # variant inherits NOTHING implicit — spell out runner/url/etc. so the
+    # manifest captures the exact configuration. Point its base_url_env
+    # at a separate frontend build (different branch, port, or Modal app).
+    # See `src/draper/evaluation/README.md#iterating-agent-architectures`.
+    #
+    # Example (commented — uncomment when you have a variant URL to test):
+    #
+    # A_pipe@hook-v2:
+    #   label: "GPT-4o + frontend pipeline — hook rewrite v2"
+    #   runner: frontend
+    #   base_url_env: EVAL_FRONTEND_A_HOOK_V2_URL
+    #   token_env: EVAL_SERVICE_TOKEN
+    #   timeout_s: 300
+
+  # ---- Pairs to judge ------------------------------------------------------
+  # Arm 1 (single-shot copywriting on 228 held-out v2 briefs).
+  # GOLD_v2 is the v2 sentinel — synthesized at judge time from
+  # Brief.reference_assistant of the v2 test split. Win-rate vs GOLD_v2 is
+  # the absolute-quality anchor: does the model match a real ad that already
+  # worked in the wild? (Tournament pairs A_v2/B_v2/C_v2 are the sanity check.)
+  #
+  # v1 pairs (shipped) — preserved as comment for reference:
+  #   [A, C], [B, C], [A, B], [C, GOLD], [A, GOLD], [B, GOLD]
+  # To re-run v1 evals, flip test_split_dir below back to data/final/test
+  # and restore the v1 pair list.
+  arm1_pairs:
+    - [A_v2, C_v2]       # frontier vs v2 FT (tournament)
+    - [B_v2, C_v2]       # base vs v2 FT (controls for FT effect)
+    - [A_v2, B_v2]       # frontier vs base (sanity)
+    - [C_v2, GOLD_v2]    # v2 FT vs real winning ad (reference, headline)
+    - [A_v2, GOLD_v2]    # frontier vs real winning ad (reference baseline)
+    - [B_v2, GOLD_v2]    # base vs real winning ad (reference floor)
+  # Arm 2 (URL-anchored full-pipeline scenarios) — no GOLD here, scenarios
+  # have no held-out reference ad to compare against. Pipeline configs are
+  # not yet ported to v2 (A_pipe_v2 / C_pipe_v2 are out of scope for the
+  # current milestone); the v1 pairs below stay for historical aggregate
+  # runs, but firing arm-2 against the v2 test_split will fail until the
+  # pipe configs ship.
+  arm2_pairs:
+    - [A_pipe, C_pipe]   # frontier pipeline vs FT pipeline (v1 only)
+    - [C, C_pipe]        # FT no-tools vs FT pipeline (v1 only)
+
+  # ---- Judges --------------------------------------------------------------
+  # Panel (May 2026, cost-aware): one frontier anchor + two cheaper cross-family
+  # judges. All-in batch cost ~$12/M output tokens average. Note: Gemini does
+  # not have a flat 50%-off batch tier, so it runs sync; OpenAI + Anthropic
+  # batch cuts those two to half price (judge-batch CLI subcommand).
+  #
+  #   - claude-sonnet-4-6  → frontier anchor, EQ-Bench's creative-task judge
+  #     default. $3/$15 sync, $1.50/$7.50 batch.
+  #   - gemini-2.5-flash   → cheap GA judge. $0.30/$2.50 (sync only).
+  #   - gpt-5.4-mini       → mid-tier judge. $0.75/$4.50 sync, $2.25 batch.
+  #
+  # Training data was multi-provider teacher-graded so Claude-as-primary does
+  # NOT introduce correlated bias. `gpt-4o` and `gemini-2.5-pro` were the
+  # former judge defaults; they are retired from the panel as of May 2026.
+  judges:
+    primary: claude-haiku-4-5
+    secondary: gpt-5.4-mini
+    panel:
+      - claude-haiku-4-5
+      - gpt-5.4-mini
+      - gemini-2.5-flash
+  # 50-pair stratified sample for cross-validation (Cohen's kappa).
+  cross_val_sample_size: 50
+  # Always run both orderings to control for position bias.
+  position_swap: true
+  # Bootstrap resamples for win-rate confidence intervals.
+  bootstrap_n: 1000
+  bootstrap_seed: 42
+  # Elo K-factor — standard tournament value.
+  elo_k: 32.0
+  elo_seed: 42
+
+  # ---- Paths ---------------------------------------------------------------
+  # All on-disk paths are derived from `root` via
+  # `draper.evaluation.paths.EvalPaths`. Per-run artifacts live under
+  # `<root>/runs/<run_id>/{aggregates,batches,diagnostics}/`; flat caches
+  # (inferences/, inferences_clean/, judgments/, learned_scores/) sit at
+  # the root.
+  # Flipped back to the v1 test split (data/final/test, 215 rows) on 2026-06-03:
+  # v1 is the thesis-reported system; v2 is not thesis material. To re-run v2
+  # evals, set this to data/constructed_v2/final_v2/test (228 rows). Briefs are
+  # loaded with their user turn already baked into the Arrow dataset.
+  test_split_dir: data/final/test
+  url_scenarios_path: data/eval/url_scenarios.jsonl
+  root: data/eval
+
+  # ---- MAUVE arm (distribution-matching) -----------------------------------
+  # Corpus-level metric comparing generations vs real high-tier ads in
+  # GPT-2-large embedding space. CLI flags on `scripts/eval.py mauve`
+  # override these per-run.
+  mauve:
+    reference_tier: high                       # tier to pull from v3 corpus
+    embedding_model: gpt2-large                # MAUVE library default
+    bootstrap_n: 100                           # 95% CI resamples per slice
+    platforms: [facebook, pinterest, reddit, tiktok, twitter]  # per-platform slices; ALL aggregate always included
+    random_seed: 42                              # bootstrap + MAUVE internal RNG
+    batch_size: 8                              # GPT-2 forward-pass batch
+    max_text_length: 1024                      # token cap per ad
+    v3_parquet: data/scored/v3/scored_ads.parquet
+
+  # ---- Reference-metrics arm (BLEU / chrF / ROUGE-L / METEOR / BERTScore) ---
+  # Per-ad overlap vs the real winning ad (GOLD) + a k-ad pool of the nearest
+  # high-tier same-platform ads. Reuses the MAUVE v3 reference + cache. CLI
+  # flags on `scripts/eval.py reference-metrics` override these per-run.
+  # Requires the [refmetrics] extra: `uv pip install -e ".[refmetrics]"`.
+  reference_metrics:
+    reference_tier: high                       # tier to pull from v3 corpus
+    platforms: [facebook, pinterest, reddit, tiktok, twitter]  # per-platform slices; ALL always included
+    k_multi: 5                                 # nearest high-tier same-platform refs per brief
+    enable_bertscore: true                     # pulls roberta-large; --no-bertscore for a fast pass
+    bertscore_model: roberta-large             # bert-score English default
+    random_seed: 42
+    v3_parquet: data/scored/v3/scored_ads.parquet

@@ -1,0 +1,732 @@
+# AdFlex filter codes for reddit
+# Auto-generated from adflex_exploration_raw.json
+
+platform: reddit
+select_filters:
+  countries:
+    1000001: Top EN
+    1000002: Tier 1
+    1000003: North America
+    1000004: South America
+    1000005: Europe
+    1000006: Top Asia
+    1000007: Middle East
+    1000008: Africa
+    3250: United States
+    3478: World Wide
+    3260: Canada
+    3247: Australia
+    3300: Germany
+    3248: United Kingdom
+    3244: Netherlands
+    3245: Spain
+    3299: Poland
+    3415: New Zealand
+    3261: France
+    3302: Denmark
+    3259: Belgium
+    3437: Singapore
+    3271: Brazil
+    3381: Portugal
+    3347: Sweden
+    3242: Italy
+    3230: India
+    3345: Ireland
+    3382: Norway
+    3316: Finland
+    3342: Hungary
+    3262: Switzerland
+    3421: Philippines
+    3246: Austria
+    3228: United Arab Emirates
+    3292: Japan
+    3431: Romania
+    3296: Turkey
+    3297: Czech Republic
+    3235: Greece
+    3405: Malaysia
+    3243: Argentina
+    3340: Croatia
+    3308: Estonia
+    3370: Lithuania
+    3475: South Africa
+    3471: Vietnam
+    3264: Bulgaria
+    3338: Hong Kong
+    3313: Mexico
+    3346: Israel
+    3453: Thailand
+    3285: South Korea
+    3254: Slovenia
+    3298: Slovakia
+    3433: Saudi Arabia
+    3343: Indonesia
+    3282: Chile
+    3372: Latvia
+    3348: Iceland
+    3425: Puerto Rico
+    3429: Qatar
+    3249: Egypt
+    3287: Colombia
+    3286: Taiwan
+    3422: Pakistan
+    3371: Luxembourg
+    3295: Cyprus
+    3310: Morocco
+    3360: Kuwait
+    3391: Malta
+    3418: Peru
+    3288: Costa Rica
+    3258: Bangladesh
+    3352: Kenya
+    3304: Dominican Republic
+    3323: Georgia
+    3400: Guam
+    3464: Uruguay
+    3417: Panama
+    3265: Bahrain
+    3411: Nigeria
+    3457: Tunisia
+    3470: US Virgin Islands
+    3375: Moldova
+    3350: Jamaica
+    3314: Nepal
+    3367: Sri Lanka
+    3416: Oman
+    3354: Cambodia
+    3351: Jordan
+    3362: Kazakhstan
+    3305: Algeria
+    3335: Guatemala
+    3284: China
+    3269: Brunei
+    3307: Ecuador
+    3386: Northern Mariana Islands
+    3325: Ghana
+    3339: Honduras
+    3412: Nicaragua
+    3446: El Salvador
+    3459: Trinidad and Tobago
+    3320: Faroe Islands
+    3428: Paraguay
+    3327: Greenland
+    3315: Ethiopia
+    3252: Azerbaijan
+    3462: Uganda
+    3461: Tanzania
+    3365: St. Lucia
+    3387: Mauritius
+    3236: Armenia
+    3270: Bolivia
+    3392: Maldives
+    3396: American Samoa
+    3257: Barbados
+    3384: Mongolia
+    3272: The Bahamas
+    3268: Bermuda
+    3465: Uzbekistan
+    3358: Saint Kitts and Nevis
+    3385: Macau
+    3276: Belize
+    3361: Cayman Islands
+    3337: Guyana
+    3441: Senegal
+    3442: Somalia
+    3274: Botswana
+    3366: Liechtenstein
+    3251: Aruba
+    3432: Rwanda
+    3467: Saint Vincent and the Grenadines
+    3452: Togo
+    3232: Antigua
+    3353: Kyrgyzstan
+    3283: Cameroon
+    3407: Namibia
+    3402: Isle Of Man
+    3326: Gibraltar
+    3469: British Virgin Islands
+    3448: Swaziland
+    3426: Palestine
+    3404: Jersey
+    3227: Andorra
+    3241: Angola
+    3393: Malawi
+    3476: Zambia
+    3239: Sint Maarten
+    3408: New Caledonia
+    3322: Grenada
+    3419: French Polynesia
+    3363: Laos
+    3303: Dominica
+    3376: Madagascar
+    3435: Seychelles
+    3330: Guadeloupe
+    3317: Fiji
+    3273: Bhutan
+    3237: "Cura\xE7ao"
+    3388: Martinique
+    3233: Anguilla
+    3399: Guernsey
+    3406: Mozambique
+    3420: Papua New Guinea
+    3443: Suriname
+    3449: Turks and Caicos Islands
+    3267: Benin
+    3374: Monaco
+    3474: Samoa
+    3349: San Marino
+    3430: "R\xE9union"
+    3293: Cape Verde
+    3321: Gabon
+    3379: Mali
+    3409: Niger
+    3458: Tonga
+    3324: French Guiana
+    3389: Mauritania
+    3427: Palau
+    3440: Sierra Leone
+    3341: Haiti
+    3328: The Gambia
+    3390: Montserrat
+    3397: Aland Islands
+    3454: Tajikistan
+    3238: Bonaire, Sint Eustatius and Saba
+    3333: Equatorial Guinea
+    3369: Lesotho
+    3434: Solomon Islands
+  interests:
+    3020: Technology & Computing
+    2973: Gaming
+    2892: Industries
+    2900: Business & Finance
+    2994: News & Education
+    2906: Entertainment
+    3033: Travel & Geography
+    2945: Family & Relationships
+    2987: Healthy Living
+    2936: Television & Film
+    2931: Reading
+    2875: Art & Design
+    3000: Sports
+    2951: Style & Fashion
+    2909: Music & Audio
+    2886: Automotive
+    2924: Moods
+    2965: Food & Drink
+    2872: Animals & Pets
+    2930: Toys & Collectibles
+  gender:
+    3670: Any
+    3668: Male
+    3669: Female
+  target_languages:
+    3081: English
+    3187: Spanish
+    3166: Portuguese
+    3044: German
+    3096: French
+    3218: Vietnamese
+    3212: Turkish
+    3080: Dutch
+    3165: Polish
+    3174: Russian
+    3116: Hungarian
+    3077: Danish
+    3123: Italian
+    3050: Arabic
+    3202: Swedish
+    3076: Czech
+    3157: "Norwegian Bokm\xE5l"
+    3070: Chinese (Simplified)
+    3107: Greek
+    3095: Finnish
+    3075: Croatian
+    3126: Japanese
+    3171: Romanian
+    3072: Chinese (Simplified)
+    3207: Thai
+    3064: Bulgarian
+    3183: Slovak
+    3184: Slovenian
+    3113: Hebrew
+    3141: Lithuanian
+    3120: Indonesian
+    3214: Ukrainian
+    3132: Korean
+    3091: Estonian
+    3066: Catalan
+    3146: Malay
+    3139: Latvian
+    3094: Filipino
+    3073: Chinese (Traditional)
+    3117: Icelandic
+    3178: Serbian
+    3102: Georgian
+    3164: Persian
+    3056: Azerbaijani
+    3156: Norwegian
+    3181: Sindhi
+    3058: Bengali
+    3217: Uzbek
+    3100: Galician
+    3208: Tigrinya
+    3093: Faroese
+    3114: Hindi
+    3148: Maltese
+    3130: Khmer
+    3153: Mongolian
+    3160: Odia (Oriya)
+    3158: Norwegian Nynorsk
+    3154: Nepali
+    3062: Bosnian
+    3215: Urdu
+    3151: Marathi
+    3046: Afrikaans
+    3065: Myanmar (Burmese)
+    3182: Sinhala
+    3150: Maori
+    3173: Romansh
+    3109: Gujarati
+    3131: Kinyarwanda
+    3047: Akan
+    3201: Swahili
+    3118: Igbo
+    3051: Aragonese
+    3059: Basque
+    3121: Irish
+    3127: Javanese
+    3049: Amharic
+    3060: Belarusian
+    3138: Latin
+    3226: Zulu
+    3128: Kannada
+    3129: Kazakh
+    3176: Sanskrit
+  placements:
+    2866: Feed
+    2865: Conversation
+  format:
+    image: Image
+    video: Video
+    carousel: Carousel
+  languages:
+    3501: English
+    3510: German
+    3500: Dutch
+    3506: French
+    3568: Spanish
+    3554: Portuguese
+    3519: Hungarian
+    3499: Danish
+    3524: Italian
+    3571: Swedish
+    3505: Finnish
+    3553: Polish
+    3556: Romanian
+    3549: Norwegian
+    3537: Lithuanian
+    3577: Turkish
+    3498: Czech
+    3525: Japanese
+    3479: Unknown
+    3503: Estonian
+    3483: Arabic
+    3490: Bulgarian
+    3497: Croatian
+    3511: Greek
+    3536: Latvian
+    3566: Slovenian
+    3531: Korean
+    3565: Slovak
+    3494: Chinese (Simplified)
+    3576: Thai
+    20350: Chinese
+    3583: Vietnamese
+    3522: Indonesian
+    3560: Serbian
+    3557: Russian
+    3504: Filipino
+    3520: Icelandic
+    3517: Hindi
+    3516: Hebrew
+    3539: Macedonian
+    3541: Malay
+    3546: Mongolian
+    3619: Interlingua
+    3491: Catalan
+    3492: Cebuano
+    3552: Persian
+    3523: Irish
+    3642: Norwegian Nynorsk
+    3508: Galician
+    3579: Ukrainian
+    3584: Welsh
+    3489: Bosnian
+    3509: Georgian
+    3502: Esperanto
+    3507: Frisian
+    3580: Urdu
+    3480: Afrikaans
+    3481: Albanian
+    3548: Nepali
+    3486: Basque
+    3535: Latin
+    3582: Uzbek
+    3484: Armenian
+    3488: Bengali
+    3538: Luxembourgish
+    3542: Malayalam
+    3573: Tamil
+    3482: Amharic
+    3485: Azerbaijani
+    3528: Kazakh
+    3569: Sundanese
+  type_call_to_actions:
+    2848: Learn More
+    2845: Shop Now
+    2847: Sign Up
+    2846: View More
+    2855: Play Now
+    2843: Download
+    2853: Apply Now
+    2857: Order Now
+    2854: Watch Now
+    2856: Pre Order Now
+    2849: Contact Us
+    2851: Get A Quote
+    2844: Install
+    2850: Get Showtimes
+    2852: See Menu
+  devices:
+    2870: Desktop
+    2869: Mobile
+    2868: Tablet
+    2871: TV
+  os:
+    2860: Windows
+    2859: MacOS
+    2864: ChromeOS
+    2863: Linux
+    2858: Android
+    2862: iOS
+  cms:
+    14662: WordPress
+    14340: Adobe Experience Manager
+    14391: Contentful
+    14412: Drupal
+    14456: HubSpot CMS Hub
+    14594: Sitecore
+    14617: Storyblok
+    14659: Wix
+    14614: Squarespace
+    14370: Builder.io
+    14606: Skolengo
+    14618: Strapi
+    14634: TYPO3 CMS
+    14399: Craft CMS
+    14559: Prismic
+    14404: DatoCMS
+    14636: Umbraco
+    14579: Sanity
+    14527: Optimizely Content Management
+    14407: Directus
+    14346: Amplience
+    14657: WHMCS
+    14561: Progress Sitefinity
+    14595: Sitecore Experience Platform
+    14476: Kontent.ai
+    14629: Tilda
+    14361: Bloomreach
+    14472: Kentico CMS
+    14440: GoDaddy Website Builder
+    14469: Joomla
+    14615: Squiz Matrix
+    14484: Liferay
+    14351: Arc XP
+    14616: Statamic
+    14410: DNN
+    14486: Lithium
+    14380: CloudCannon
+    14367: Brightspot
+    14385: Concrete CMS
+    14401: CrownPeak
+    14656: Weebly
+    14547: Pimcore
+    14438: Ghost
+    14413: Duda
+    14517: Odoo
+    14583: Scrivito
+    14584: SDL Tridion
+    14631: TN Express Web
+    14516: October CMS
+    14394: CoreMedia Content Cloud
+    14555: Plone
+    14512: Neos CMS
+    14602: Sitevision CMS
+    14501: Microsoft SharePoint
+    14395: Cosmic
+    14430: ExpressionEngine
+    14591: Silverstripe
+    14638: Unicorn Platform
+    14500: microCMS
+    14519: Omni CMS
+    14445: GraphCMS
+    14355: Backdrop
+    14420: Ektron CMS
+    14336: 1C-Bitrix
+    14497: MemberStack
+    14341: Adobe Experience Manager Franklin
+    14373: ButterCMS
+    14558: Prepr
+    14387: Contao
+    14530: Orchard Core
+    14622: Sulu
+    14628: Tiki Wiki CMS Groupware
+    14560: ProcessWire
+    14468: Jimdo
+    14582: Scorpion
+    14648: Weblication
+    14442: Google Sites
+    14363: BoldGrid
+    14389: Contensis
+    14511: NationBuilder
+    14470: JouwWeb
+    14471: K-Sup
+    14523: OpenCms
+    14432: eZ Publish
+    14539: Phoenix Site
+    14587: Shift4Shop
+    14358: Bentobox
+    14446: Grav
+    14348: ApostropheCMS
+    14436: Fork CMS
+    14509: Mura CMS
+    14439: Gnuboard
+    14449: GX WebManager
+    14640: Varbase
+    14650: WebNode
+    14377: Chorus
+    14452: HCL Digital Experience
+    14457: Ibexa DXP
+    14478: Kooboo CMS
+    14522: OpenCities
+    14536: Paymenter
+    14599: SiteManager
+    14632: TownNews
+    14345: Amiro.CMS
+    14400: Cratejoy
+    14403: DataLife Engine
+    14409: DM Polopoly
+    14461: ImpressPages
+    14466: Jahia DX
+    14480: Lede
+    14489: LocomotiveCMS
+    14502: Milestone CMS
+    14506: MotoCMS
+    14521: onpublix
+    14556: Popmenu
+    14571: Reactive
+    14589: Shuttle
+    14630: Tistory
+    14646: webEdition
+    14649: Weblium
+  funnels:
+    15037: Instapage
+    15039: Keap
+    15035: ClickFunnels
+    15036: GetResponse
+    15038: Kartra
+  ecommerce:
+    14702: Cart Functionality
+    14925: Shopify
+    14679: Amazon Webstore
+    15015: WooCommerce
+    14898: Salesforce Commerce Cloud
+    14765: Fourthwall
+    15007: Webflow Ecommerce
+    14956: Squarespace Commerce
+    14824: Magento
+    15013: Wix eCommerce
+    14927: Shopline
+    14781: HCL Commerce
+    14690: BigCommerce
+    14903: SAP Commerce Cloud
+    14737: EasyDigitalDownloads
+    14779: Gumroad
+    14869: Pattern by Etsy
+    14719: commercetools
+    14806: Kajabi
+    14879: PrestaShop
+    14723: Craft Commerce
+    14791: Intershop
+    16699: Pimcore
+    14846: nopCommerce
+    14854: OpenCart
+    14733: Drupal Commerce
+    14937: Shopware
+    14857: Oracle Commerce Cloud
+    14789: Imweb
+    14906: Scalefast
+    14776: Gomag
+    14951: Spree
+    14743: Ecwid
+    14775: GoDaddy Online Store
+    14955: Square Online
+    14725: CS Cart
+    14862: osCommerce
+    14921: Shoper
+    14972: THG Ingenuity
+    14730: Dokan
+    14808: Kibo Commerce
+    16688: 1C-Bitrix
+    15001: VTEX
+    14855: Optimizely Commerce
+    14729: DigitalRiver
+    14816: Lightspeed eCom
+    14844: NetSuite
+    14843: Neto
+    14894: Robin
+    14987: Ubercart
+    14672: Accesso
+    14991: Unas
+    14840: Nacelle
+    14878: Powergap
+    14926: Shoplazza
+    14831: Miva
+    14946: Snipcart
+    14848: Nuvemshop
+    14919: ShopBase
+    14936: Shoptet
+    14970: Tebex
+    14703: Cart.com
+    14752: eZ Publish
+    14876: Podia
+    14914: Sellix
+    14958: Storeden
+    16702: Shift4Shop
+    14689: Big Cartel
+    14705: Centra
+    14717: Commerce7
+    14718: Commercelayer
+    14973: ThriveCart
+    14766: Foxy.io
+    14864: OXID eShop
+    14866: OXID eShop Enterprise Edition
+    14913: Sellingo
+    15030: Zen Cart
+    14715: Commerce Server
+    14803: Jumpseller
+    14934: Shoprenter
+    14726: CubeCart
+    14757: Fastspring
+    14856: Oracle Commerce
+    14858: Orckestra
+    14883: PureCars
+    14885: Quick.Cart
+    14886: Quickbutik
+    14916: Sharetribe
+    14966: Sylius
+    14989: Ueeshop
+    15018: X-Cart
+    16697: Paymenter
+    14712: CloudSuite
+    14771: Gambio
+    14778: GrocerKey
+    14787: Ikas
+    14819: Loja Integrada
+    14828: Mercado Shops
+    14900: Salla
+    14924: ShopGold
+    14938: ShopWired
+    14953: Spryker
+    14957: StackCommerce
+    14996: Visualsoft
+    14998: Volusion
+    15023: Yahoo! Ecommerce
+    16691: Cratejoy
+    16701: Reactive
+    16706: Weblium
+  affiliate:
+    14307: Impact
+    14295: AWIN
+    14318: Rakuten
+    14322: Rewardful
+    14305: FirstPromoter
+    14306: GoAffPro
+    14328: Tapfiliate
+    14297: Clickbank
+    14319: Refersion
+    14315: Pepperjam
+    14316: Post Affiliate Pro
+    14320: RevenueHunt
+    14312: Optimise
+    14291: Affiliatly
+    14311: Narrativ
+    14325: Skimlinks
+    14330: Tolt
+    14334: Webgains
+    14286: AccessTrade
+    14331: Tradedoubler
+    14285: A8.net
+    14332: Upfluence
+    14288: Affilae
+    14326: Sovrn//Commerce
+    14327: Systeme.io
+    14313: Partnerize
+    14287: Admitad
+    14302: Duel
+    14303: eBay Partner Network
+    14296: Booking.com
+    14289: Affiliate B
+    14299: Digistore24
+    14310: Moshimo
+    14329: Tiqets
+    14333: ValueCommerce
+    14314: PayKickStart
+    14323: ShoutOut
+    14293: Affilo
+  tracker:
+    15040: AdsBridge
+    15049: VOLUUM
+    15042: BeMob
+    15043: Binom
+  arbitrages:
+    19496: Google Display
+    19495: Google Search
+range_filters:
+  seen_counts:
+    min: 0
+    max: 999
+    infinite: true
+  days_running:
+    min: 0
+    max: 365
+    infinite: true
+  channel_karma:
+    min: 0
+    max: 100000
+    infinite: true
+  upvotes:
+    min: 0
+    max: 10000
+    infinite: true
+  comments:
+    min: 0
+    max: 1000
+    infinite: true
+  domain_age:
+    min: 1
+    max: 1000
+    infinite: true
+  domain_monthly_traffic:
+    min: 1000
+    max: 1000000
+    infinite: true
+orderings:
+  updated_at: Newest
+  oldest: Oldest
+  popularity: Highest Engagement
+  most_relevant: Most Relevant
+  seen_counts: Most Seen
+  days_active: Longest Running
+  domain.traffic: Web Traffic

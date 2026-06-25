@@ -1,0 +1,67 @@
+# Draper.ai — Scraping Configuration
+
+verticals:
+  - ecommerce
+  - saas
+  - d2c
+  - local_services
+  - fitness
+  - education
+  - finance
+  - b2b
+  - healthcare
+  - food_and_beverage
+  - real_estate
+
+rate_limits:
+  adflex:
+    requests_per_minute: 30
+    burst_size: 5
+    credits_per_call: 100  # confirmed 2026-04-07
+    ads_per_page: 18
+  bigspy:
+    requests_per_minute: 30
+    burst_size: 5
+  apify:
+    requests_per_minute: 60
+    burst_size: 10
+  serpapi:
+    requests_per_minute: 30
+    burst_size: 5
+
+targets:
+  # Per-vertical targets for full-scale scraping (Phase 2)
+  ads_per_vertical: 2500
+  # Exploratory scraping (Phase 1)
+  exploratory_count: 500
+  exploratory_verticals:
+    - ecommerce
+    - saas
+    - fitness
+
+adflex:
+  # Primary data source — $300/mo plan, 500K credits
+  platforms:
+    - facebook    # Best engagement coverage (reactions, comments, shares)
+    - tiktok      # Strong engagement (likes, shares, plays)
+    - x           # Good (reposts, replies, likes)
+    - pinterest   # Niche (saves, repins)
+    - reddit      # Weakest engagement data
+  orderings:
+    - popularity
+    - days_active
+    - seen_counts
+  # Key filter codes (from /filters endpoint)
+  # countries: 24=US, 34=CA, 21=AU, 1000001=Top EN, 1000002=Tier 1
+
+output:
+  raw_dir: data/raw
+  format: jsonl
+
+# --- Phase 2: Full-Scale Collection ---
+# Detailed sweep plans in configs/sweep_plans.yaml
+# Filter codes extracted to configs/filters/
+
+collection:
+  sweep_plan: configs/sweep_plans.yaml
+  filters_dir: configs/filters

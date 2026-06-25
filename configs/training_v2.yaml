@@ -1,0 +1,164 @@
+# Draper.ai — Training v2 Configuration
+#
+# Primary base model: unsloth/gemma-4-E4B-it-unsloth-bnb-4bit (locked).
+# Phase 0 bake-off is now OPTIONAL — only run it if Phase 2's chat-mode
+# smoke (10-ad pilot) reveals Gemma 4 E4B is not behaving as expected
+# on the (canonical-JSON brief → <think> + ad) format. The full
+# candidate list is preserved below as a fallback ladder.
+#
+# Loaded by draper.training.config.TrainingConfig.from_yaml().
+
+training:
+  # ---- Model -----------------------------------------------------------
+  # PRIMARY (locked, as of 2026-05-18):
+  #   unsloth/gemma-4-E4B-it-unsloth-bnb-4bit
+  #   Google | Apache 2.0 | 8B total / 4B active MoE | April 2026
+  #   - Freshest open-weight model in band; widely-validated Google
+  #     lineage; Unsloth bnb-4bit is native (no compat risk).
+  #   - Native think channel: `<|think|>` control token activated via
+  #     `apply_chat_template(..., enable_thinking=True)`. Raw output
+  #     wraps the thought in `<|channel>thought ... <channel|>`.
+  #   - GOTCHA #1 (template skew): our construction-side assistant turn
+  #     is `<think>...</think>\n\n{ad}` (bare <think>). At training
+  #     time, choose ONE path:
+  #       (a) Train Gemma 4 to emit our bare `<think>` tags (lose the
+  #           RL-tuned native channel; simpler data path).
+  #       (b) Re-render dataset rows to Gemma's native template before
+  #           training (preserves RL prior; requires a tokenizer-aware
+  #           post-processor between dataset_builder and trainer).
+  #     Default to (a) unless Phase 2 smoke shows poor think quality.
+  #   - GOTCHA #2 (MoE specialization): 4B active params per forward
+  #     pass means voice-specialization may need more steps than a
+  #     dense 8B. Watch eval_loss plateau; bump num_train_epochs if so.
+  #   - VRAM: ~10GB minimum at QLoRA r=64 / 8192; plenty of H100 margin
+  #     for a larger batch or longer context if needed.
+  #
+  # ----------------------------------------------------------------------
+  # FALLBACK LADDER (Phase 0 bake-off — OPTIONAL, run only if Phase 2's
+  # 10-ad chat-mode smoke reveals Gemma 4 E4B isn't fitting the format).
+  # Ranked best-fit-first as of 2026-05-18.
+  #
+  #   F1. unsloth/Phi-4-reasoning-plus-bnb-4bit
+  #       Microsoft | MIT | 14B | April 2025
+  #       Native <think> via outcome-based RL. AIME 2024 = 81.3%;
+  #       IFEval +22pts over Phi-4 base (best in cohort). 14B is heavier
+  #       (~50GB active VRAM at QLoRA r=64 / 8192) but fits H100. Pick
+  #       if instruction-following accuracy is the bottleneck.
+  #
+  #   F2. allenai/Olmo-3-7B-Think
+  #       Allen Institute for AI (Seattle) | Apache 2.0 | 7B | Dec 2025
+  #       Only fully-open American 7B with a native <think> channel.
+  #       AIME = 71.6, IFEval = 88.2. GOTCHA: no Unsloth bnb-4bit — run
+  #       a `FastLanguageModel.from_pretrained(...)` smoke first. Pick
+  #       if Phi-4 size or IP provenance matters; AI2 publishes Dolma 3
+  #       training data for downstream license defensibility.
+  #
+  #   F3. unsloth/gemma-3-12b-it-unsloth-bnb-4bit
+  #       Google | Apache 2.0 | 12B dense | March 2025
+  #       No native think channel. Pick only if F1–F2 fail and you want
+  #       to own the reasoning channel entirely via SFT. Strong creative
+  #       writing reputation; battle-tested Unsloth path.
+  #
+  #   F4. tiiuae/Falcon-H1R-7B  [high-ceiling / high-risk]
+  #       TII (UAE) | Falcon LLM License 1.0 (commercial OK, attribution
+  #       required) | 7B | Jan 2026 | Mamba-SSM hybrid
+  #       AIME2025 = 83.1 (beats 32B OLMo3-Think). Native <think> tags.
+  #       GOTCHA: SSM layers may not get LoRA adapters — half a day of
+  #       Unsloth compat smoke before committing. Pick if Gemma 4 E4B's
+  #       reasoning ceiling is the bottleneck and license attribution is
+  #       acceptable.
+  #
+  # Eliminated upstream:
+  #   - DeepSeek-R1-0528-Qwen3-8B, Qwen3-8B, Qwen3.5-9B
+  #     (Chinese: DeepSeek / Alibaba — provenance constraint)
+  #   - Mistral / Magistral / Ministral family (French — preference for
+  #     non-Chinese was relaxed, but Mistral's `[THINK]` tag format
+  #     differs from our pipeline; not worth the normalization cost)
+  #   - Falcon 3-7B (TII; superseded by H1R-7B)
+  #   - Llama 4 Scout (109B/17B MoE — license bars training other AI
+  #     models on outputs; conflicts with backtranslation workflow)
+  #   - Phi-4-mini-reasoning (3.8B — below 7B floor)
+  #   - Llama-3.1-8B-Instruct (no native <think>; older than Gemma 4)
+  #   - Cohere Aya Expanse 8B (CC-BY-NC — non-commercial)
+  #   - Aleph Alpha Pharia-7B (non-commercial)
+  #   - Reka Edge ($1M revenue cap — SaaS unfriendly)
+  base_model: unsloth/gemma-4-E4B-it-unsloth-bnb-4bit  # PRIMARY; bake-off optional
+  smoke_base_model: unsloth/Qwen2.5-0.5B-Instruct
+  load_in_4bit: true
+  # Bumped 4096 → 8192: <think> traces inflate sequences. Phase 0 should
+  # report p95 sequence length — if it's > 7k, bump again to 12k and
+  # drop per-device batch to 1.
+  max_length: 8192
+
+  # ---- LoRA / PEFT -----------------------------------------------------
+  # Richer joint target than v1 (rationale + ad vs ad only) — rank
+  # doubled vs v1's r=32. alpha = 2*r preserves the rsLoRA convention.
+  lora_r: 64
+  lora_alpha: 128
+  lora_dropout: 0.05
+  init_lora_weights: true
+  use_rslora: true
+  use_dora: true
+  target_modules:
+    - q_proj
+    - k_proj
+    - v_proj
+    - o_proj
+    - gate_proj
+    - up_proj
+    - down_proj
+
+  # ---- Optimizer / schedule -------------------------------------------
+  # Reduced 2.0e-4 → 1.5e-4: longer effective sequences (4096 → 8192)
+  # are noisier per-batch gradients; cool the LR to compensate.
+  learning_rate: 1.5e-4
+  num_train_epochs: 3
+  per_device_train_batch_size: 2
+  per_device_eval_batch_size: 2
+  gradient_accumulation_steps: 8
+  warmup_ratio: 0.03
+  lr_scheduler_type: cosine
+  weight_decay: 0.0
+  optim: adamw_8bit
+  bf16: true
+  seed: 42
+
+  # ---- SFT-specific ---------------------------------------------------
+  packing: false
+  padding_free: false
+  use_liger_kernel: false  # hard-blocked by validator; see configs/training.yaml
+  # Critical: <think> tokens must land inside the assistant turn span
+  # for the chosen base model's chat template. Verified per-candidate in
+  # Phase 0 before committing. See arch doc §5.
+  assistant_only_loss: true
+
+  # ---- Eval / checkpointing -------------------------------------------
+  eval_strategy: steps
+  eval_steps: 50
+  save_strategy: steps
+  save_steps: 50
+  save_total_limit: 5
+  logging_steps: 1
+  load_best_model_at_end: true
+  metric_for_best_model: eval_loss
+  greater_is_better: false
+  early_stopping_patience: 2
+
+  # ---- Tracking -------------------------------------------------------
+  report_to: trackio
+  trackio_project: draper-v2-gemma4
+
+  # ---- Paths ----------------------------------------------------------
+  # Arm B in the v2 bake-off (Gemma 4 E4B, bare `<think>` tags). The
+  # parallel Qwen3 and Gemma-native arms live in their own sibling
+  # configs (training_v2_qwen.yaml, training_v2_gemma_native.yaml).
+  dataset_dir: data/constructed_v2/final_v2
+  output_dir: outputs/draper-v2-gemma4-bare
+  merged_dir: outputs/draper-v2-gemma4-bare/merged
+
+  # ---- Smoke overrides ------------------------------------------------
+  smoke:
+    n_examples: 100
+    max_steps: 50
+    per_device_train_batch_size: 2
+    gradient_accumulation_steps: 1

@@ -1,0 +1,790 @@
+# AdFlex filter codes for tiktok
+# Auto-generated from adflex_exploration_raw.json
+
+platform: tiktok
+select_filters:
+  countries:
+    1000001: Top EN
+    1000002: Tier 1
+    1000003: North America
+    1000004: South America
+    1000005: Europe
+    1000006: Top Asia
+    1000007: Middle East
+    1000008: Africa
+    17194: United States
+    17215: Brazil
+    17415: Vietnam
+    17228: China
+    17191: Australia
+    17243: Poland
+    17244: Germany
+    17365: Philippines
+    17252: Estonia
+    17189: Spain
+    17204: Canada
+    17205: France
+    17192: United Kingdom
+    17172: United Arab Emirates
+    17377: Saudi Arabia
+    17375: Romania
+    17188: Netherlands
+    17240: Turkey
+    17366: Pakistan
+    17359: New Zealand
+    17186: Italy
+    17349: Malaysia
+    17282: Hong Kong
+    17362: Peru
+    17287: Indonesia
+    17193: Egypt
+    17419: South Africa
+    17239: Cyprus
+    17397: Thailand
+    17254: Morocco
+    17381: Singapore
+    17214: Bolivia
+    17203: Belgium
+    17236: Japan
+    17187: Argentina
+    17290: Israel
+    17257: Mexico
+    17286: Hungary
+    17291: Sweden
+    17325: Portugal
+    17179: Greece
+    17246: Denmark
+    17231: Colombia
+    17206: Switzerland
+    17251: Ecuador
+    17260: Finland
+    17326: Norway
+    17219: Belarus
+    17304: Kuwait
+    17241: Czech Republic
+    17226: Chile
+    17298: Cambodia
+    17190: Austria
+    17289: Ireland
+    17373: Qatar
+    17306: Kazakhstan
+    17229: South Korea
+    17253: Iraq
+    17360: Oman
+    17230: Taiwan
+    17209: Bahrain
+    17408: Uruguay
+    17250: Lebanon
+    17316: Latvia
+    17314: Lithuania
+    17411: Saint Vincent and the Grenadines
+    17315: Luxembourg
+    17234: Russia
+    17413: British Virgin Islands
+    17361: Panama
+    17416: Vanuatu
+    17335: Malta
+    17208: Bulgaria
+    17198: Slovenia
+    17327: Ukraine
+    17270: Gibraltar
+    17267: Georgia
+    17379: Seychelles
+    17331: Mauritius
+    17248: Dominican Republic
+    17284: Croatia
+    17199: Serbia
+    17232: Costa Rica
+    17242: Slovakia
+    17171: Andorra
+    17296: Kenya
+    17372: Paraguay
+    17369: Puerto Rico
+    17343: Guernsey
+    17348: Jersey
+    17307: Laos
+    17355: Nigeria
+    17182: Bonaire, Sint Eustatius and Saba
+    17196: Azerbaijan
+    17295: Jordan
+    17311: Sri Lanka
+    17174: India
+    17180: Armenia
+    17288: Myanmar
+    17292: Iceland
+  interests:
+    18583: Interest / News & Entertainment
+    18014: Interest / Education
+    18468: Interest / Apparel & Accessories
+    18432: Interest / Business Services
+    18321: Interest / Apps
+    18379: Interest / Beauty & Personal Care
+    18349: Interest / Travel
+    18550: Interest / Tech & Electronics
+    17463: Video / Culture & Education & Technology
+    18341: Interest / Financial Services
+    17452: Video / Entertainment
+    17971: Creator / Technology & Education
+    17485: Video / Beauty & Style
+    17474: Video / Lifestyle
+    18085: Interest / Games
+    18537: Interest / Home Improvement
+    17944: Creator / Fashion & Beauty
+    18657: Interest / Life Services
+    18562: Interest / Vehicles & Transportation
+    18454: Interest / Sports & Outdoors
+    18624: Interest / Food & Beverage
+    17441: Video / Sports & Outdoors
+    17981: Creator / Game
+    17471: Video / Auto & Vehicles
+    17449: Video / Family & Relationships
+    17997: Creator / Pop Culture
+    17976: Creator / Fitness & Health
+    17979: Creator / Travel
+    18367: Interest / Household Products
+    17984: Creator / Talent
+    18040: Interest / Appliances
+    18002: Creator / Family
+    17992: Creator / Sport
+    18122: Interest / Mobile
+    17955: Creator / Food & Beverage
+    18527: Interest / Baby & Kids Products
+    17430: Video / Talents
+    17949: Creator / Transportation & Vehicle
+    17426: Video / Nature
+    17977: Creator / Home & Garden
+    18543: Interest / Pets
+    17962: Creator / Acg Content
+    17967: Creator / Random Photo/Video Shoot
+    17437: Video / Performance
+    17943: Creator / Comedy
+    17970: Creator / Society
+    18039: Interest / Sports
+    17492: Video / Society
+    17952: Creator / Motivation & Advice
+    17940: Creator / Lipsync
+    18001: Creator / Art
+    17953: Creator / Relationship
+    18563: Interest / Automobiles
+    18620: Interest / Tourism
+    17980: Creator / Occupation
+    18377: Interest / Toys
+    18278: Interest / Pet
+    17989: Creator / Animal
+    17462: Video / Supernatural & Horror
+    17960: Creator / Drama
+    18003: Creator / Oddly Satisfying
+    18618: Interest / Cars
+    18113: Interest / Puzzle Games
+  gender:
+    17425: Any
+    17424: Female
+    17423: Male
+  target_languages:
+    17059: English
+    17061: Spanish
+    17161: Vietnamese
+    17125: Portuguese
+    17039: Arabic
+    17153: Turkish
+    17055: German
+    17067: French
+    17148: Thai
+    17123: Polish
+    17115: Dutch
+    17087: Italian
+    17084: Indonesian
+    17129: Russian
+    17088: Japanese
+    17128: Romanian
+    17081: Hungarian
+    17058: Greek
+    17076: Hebrew
+    17110: Malay
+    17094: Korean
+    17167: Chinese (Simplified)
+    17143: Swedish
+    17065: Finnish
+    17052: Czech
+    17158: Ukrainian
+    17092: Khmer
+  languages:
+    16775: English
+    16842: Spanish
+    16828: Portuguese
+    16757: Arabic
+    16857: Vietnamese
+    16784: German
+    16753: Unknown
+    16780: French
+    16827: Polish
+    16799: Japanese
+    16796: Indonesian
+    16798: Italian
+    16830: Romanian
+    16850: Thai
+    16851: Turkish
+    16774: Dutch
+    16831: Russian
+    16790: Hebrew
+    16793: Hungarian
+    16845: Swedish
+    20353: Chinese
+    16785: Greek
+    16823: Norwegian
+    16779: Finnish
+    16773: Danish
+    16805: Korean
+    16854: Urdu
+    16815: Malay
+    16772: Czech
+    16768: Chinese (Simplified)
+    16778: Filipino
+    16803: Khmer
+    16765: Catalan
+    16878: Breton
+    16802: Kazakh
+    16806: Kurdish (Kurmanji)
+    16826: Persian
+    16853: Ukrainian
+    16782: Galician
+    16766: Cebuano
+    16776: Esperanto
+    16840: Slovenian
+    16916: Norwegian Nynorsk
+    16754: Afrikaans
+    16777: Estonian
+    16760: Basque
+    16839: Slovak
+    16809: Latin
+    16771: Croatian
+    16919: Occitan
+    16893: Interlingua
+    16755: Albanian
+    16764: Bulgarian
+    16811: Lithuanian
+    16863: Javanese
+    16762: Bengali
+    16797: Irish
+    16834: Serbian
+    16816: Malayalam
+    16844: Swahili
+    16829: Punjabi
+    16781: Frisian
+    16763: Bosnian
+    16856: Uzbek
+    16759: Azerbaijani
+    16813: Macedonian
+    16791: Hindi
+    16801: Kannada
+    16858: Welsh
+    16812: Luxembourgish
+    16825: Pashto
+    16794: Icelandic
+    16761: Belarusian
+    16837: Sindhi
+    16820: Mongolian
+    16807: Kyrgyz
+    16758: Armenian
+    16843: Sundanese
+    16787: Haitian Creole
+    16847: Tamil
+    16852: Turkmen
+    16860: Yiddish
+    16810: Latvian
+    16838: Sinhala
+    16939: Walloon
+    16814: Malagasy
+    16846: Tajik
+    16925: Romansh
+    16819: Marathi
+    16821: Myanmar (Burmese)
+    16756: Amharic
+    16783: Georgian
+    16822: Nepali
+    16841: Somali
+    16848: Tatar
+    16849: Telugu
+    16861: Yoruba
+  type_call_to_actions:
+    16995: Learn More
+    17015: Shop Now
+    16999: Order Now
+    17034: Watch Now
+    17018: Sign Up
+    16992: Interested
+    17032: Visit Store
+    17031: View Now
+    16949: Book Now
+    16959: Check It Out
+    16945: Apply Now
+    17006: Play Game
+    19505: More Information
+    17009: Read More
+    16996: Listen Now
+    16973: Experience Now
+    16972: Download
+    16991: Install Now
+    16997: Order Here
+    16969: Contact Us
+    17023: Subscribe
+    17025: Take A Look
+    16955: Buy It
+    16956: Buy Today
+    17008: Purchase It Now
+    17012: Shop Here
+    17011: Shop
+    16979: Get Quote
+    17002: Order Today
+    16954: Buy Here
+    19508: Buy Now
+    16985: Get Tickets Now
+    17016: Shop Today
+    17003: Order Yours Now
+    16978: Get It Now
+    17004: Order Yours Today
+    16983: Get Started Now
+    16984: Get Started Today
+    16998: Order Immediately
+    16975: Follow Us To Watch
+    17017: Show Now
+    16971: Donate Now
+    16994: Join Us
+    19513: Follow Us Now
+    17007: Pre Order Now
+    17021: Sign Up Today
+    16970: Contact Us Today
+    17005: Pick Yours
+    17020: Sign Up Now
+    16987: Get Yours Now
+    16981: Get Showtimes
+    16946: Apply Today
+    17033: Visit Us
+    16990: Get Your Order Now
+    17028: Try It Right Now
+    16993: Join Today
+    16966: Click To Start
+    17013: Shop It Now
+    16958: Check It Now
+    16963: Click Now
+    19506: Register
+    17000: Order Place Now
+    16947: Book Appointment Now
+    16952: Book Your Journey
+    17010: Register Today
+    19507: Register Now
+    17001: Order Quickly
+    17030: Use It
+    16962: Click
+    17029: Try This New App
+    19511: Buy
+    16950: Book Today
+    16957: Check In App
+    17024: Subscribe Now
+    16964: Click To Buy Now
+    16948: Book Instantly
+    16960: Check It Out Now
+    16951: Book With Us Today
+    16986: Get Tix Now
+    16976: Get Fit Now
+    17027: Travel Now
+    16977: Get Fit Today
+    17014: Shop New Arrivals
+    19512: Watch
+    17026: Train With Me Today
+    16953: Book Your Seats Now
+    16988: Get Your Degree
+    17019: Sign Up And Hire
+    16974: Find Out Now
+    16982: Get Started
+    19509: Buy Tickets Now
+    16961: Check Out Today
+    16967: Come Fly With Us
+    16965: Click To Get Quote
+    16980: Get Quote Today
+    16989: Get Your Money Now
+    19510: Buy Tickets
+    16968: Compare Now
+    17022: Start Your Exercise
+  os:
+    16943: Windows
+    16942: MacOS
+    16944: Linux
+  cms:
+    19053: WordPress
+    18731: Adobe Experience Manager
+    18782: Contentful
+    18803: Drupal
+    19008: Storyblok
+    18985: Sitecore
+    19020: Tilda
+    18997: Skolengo
+    19050: Wix
+    19009: Strapi
+    18847: HubSpot CMS Hub
+    19027: Umbraco
+    18950: Prismic
+    19025: TYPO3 CMS
+    18970: Sanity
+    18761: Builder.io
+    18737: Amplience
+    18795: DatoCMS
+    18918: Optimizely Content Management
+    18727: 1C-Bitrix
+    19031: Varbase
+    19005: Squarespace
+    18790: Craft CMS
+    18908: Odoo
+    18860: Joomla
+    18863: Kentico CMS
+    18875: Liferay
+    19006: Squiz Matrix
+    18798: Directus
+    18986: Sitecore Experience Platform
+    18833: Google Sites
+    18776: Concrete CMS
+    18878: Live Story
+    18867: Kontent.ai
+    18778: Contao
+    18771: CloudCannon
+    18752: Bloomreach
+    18764: ButterCMS
+    18746: Backdrop
+    19007: Statamic
+    18804: Duda
+    18907: October CMS
+    18952: Progress Sitefinity
+    18821: ExpressionEngine
+    18892: Microsoft SharePoint
+    18785: CoreMedia Content Cloud
+    18938: Pimcore
+    19039: Weblication
+    19010: Strato Website
+    18993: Sitevision CMS
+    18975: SDL Tridion
+    19004: SPIP
+    18951: ProcessWire
+    18801: DNN
+    18829: Ghost
+    18786: Cosmic
+    18946: Plone
+    18830: Gnuboard
+    18903: Neos CMS
+    19041: WebNode
+    18861: JouwWeb
+    18859: Jimdo
+    18921: Orchard Core
+    18888: MemberStack
+    19040: Weblium
+    18949: Prepr
+    19013: Sulu
+    19058: Proximis Unified Commerce
+    19019: Tiki Wiki CMS Groupware
+    19022: TN Express Web
+    18831: GoDaddy Website Builder
+    19047: Weebly
+    18930: Phoenix Site
+    18755: Bolt CMS
+    18806: Dynamicweb
+    18848: Ibexa DXP
+    18894: MODX
+    18780: Contensis
+    18843: HCL Digital Experience
+    18826: FlexCMP
+    18850: imperia CMS
+    19029: Unicorn Platform
+    18757: Botble CMS
+    18837: Grav
+    18900: Mura CMS
+    18974: Scrivito
+    18996: Skilldo
+    18912: onpublix
+    18910: Omni CMS
+    18800: DM Polopoly
+    18791: Cratejoy
+    18839: Griddo
+    18840: GX WebManager
+    18862: K-Sup
+    18886: Megagroup CMS.S3
+    18896: Mono.net
+    19048: WHMCS
+    18745: Azko CMS
+    18799: Django CMS
+    18827: Fork CMS
+    18857: Jahia DX
+    18742: Arc XP
+    18749: Bentobox
+    18773: CMS Made Simple
+    18823: eZ Publish
+    18858: Jalios
+    18880: LocomotiveCMS
+    18941: Pixieset Website
+    18990: SiteManager
+    19002: Solodev
+    19056: XOOPS
+  funnels:
+    19447: ClickFunnels
+    19449: Instapage
+    19448: GetResponse
+    19451: Keap
+    19450: Kartra
+  ecommerce:
+    19094: Cart Functionality
+    19317: Shopify
+    19071: Amazon Webstore
+    19319: Shopline
+    19407: WooCommerce
+    19318: Shoplazza
+    19157: Fourthwall
+    19292: Salla
+    19216: Magento
+    19290: Salesforce Commerce Cloud
+    19420: YouCan
+    19393: VTEX
+    19128: Easy Orders
+    19399: Webflow Ecommerce
+    19271: PrestaShop
+    19423: Zid
+    19405: Wix eCommerce
+    19295: SAP Commerce Cloud
+    19368: Tiendanube
+    19168: Gomag
+    19427: 1C-Bitrix
+    19125: Drupal Commerce
+    19348: Squarespace Commerce
+    19082: BigCommerce
+    19093: Cafe24
+    19246: OpenCart
+    19248: Oracle Commerce
+    19313: Shoper
+    19129: EasyDigitalDownloads
+    19240: Nuvemshop
+    19179: Ikas
+    19215: Magazord
+    19238: nopCommerce
+    19117: CS Cart
+    19228: MSHOP
+    19328: Shoptet
+    19373: Tray
+    19064: Accesso
+    19345: Spryker
+    19198: Kajabi
+    19383: Unas
+    19183: Intershop
+    19178: IdoSell Shop
+    19329: Shopware
+    19152: Fenicio
+    19173: HCL Commerce
+    19172: Haravan
+    19326: Shoprenter
+    19230: MyCashFlow
+    19249: Oracle Commerce Cloud
+    19366: Ticimax
+    19181: Imweb
+    19135: Ecwid
+    19438: Pimcore
+    19211: Loja Integrada
+    19361: TakeDrop
+    19208: Lightspeed eCom
+    19194: JTL Shop
+    19115: Craft Commerce
+    19097: Centra
+    19134: EcForce
+    19247: Optimizely Commerce
+    19235: Neto
+    19195: Jumpseller
+    19356: SummerCart
+    19254: osCommerce
+    19352: Storeino
+    19357: Swell
+    19171: Gumroad
+    19130: EasyStore
+    19237: Next Total
+    19209: Linx Commerce
+    19311: ShopBase
+    19316: ShopGold
+    19062: Abicart
+    19278: Quickbutik
+    19350: Storeden
+    19286: Robin
+    19334: Sky-Shop
+    19116: Crystallize
+    19381: Ueeshop
+    19324: Shoppub
+    19163: Gambio
+    19185: Inveon
+    19445: Weblium
+    19265: plentymarkets
+    19266: plentyShop LTS
+    19239: novomind iSHOP
+    19274: Proximis Unified Commerce
+    19365: ThriveCart
+    19086: Bizweb
+    19234: NEO - Omnichannel Commerce Platform
+    19268: Podia
+    19403: Wikinggruppen
+    19431: Dynamicweb
+    19111: commercetools
+    19081: Big Cartel
+    19256: OXID eShop
+    19389: Vnda
+    19270: Powergap
+    19298: Scalefast
+    19090: Botble CMS
+    19236: NetSuite
+    19150: FatherShops
+    19250: Orckestra
+    19261: Pattern by Etsy
+    19338: Snipcart
+    19340: Solusquare OmniCommerce Cloud
+    19406: WiziShop
+    19416: Yampi Virtual store
+    19112: Convertr
+    19141: ePages
+    19187: Irroba
+    19217: MakeShop
+    19257: OXID eShop Community Edition
+    19303: Selless
+    19091: Bsale
+    19258: OXID eShop Enterprise Edition
+    19355: Subbly
+    19096: CCV Shop
+    19102: CloudCart
+    19158: Foxy.io
+    19259: OXID eShop Professional Edition
+    19347: Square Online
+    19396: wBuy
+    19430: Cratejoy
+    19132: EC-CUBE
+    19151: Fbits
+    19161: Future Shop
+    19305: Sellingo
+    19395: wap.store
+    19400: Websale
+    19066: Aero Commerce
+    19083: BigCommerce B2B Edition
+    19104: CloudSuite
+    19122: Dokan
+    19127: e-Shop Commerce
+    19131: ebisumart
+    19144: eZ Publish
+    19167: GoDaddy Online Store
+    19182: inSales
+    19192: JoomShopping
+    19210: LogiCommerce
+    19231: MyOnlineStore
+    19277: Quick.Cart
+    19308: Sharetribe
+    19341: SoteShop
+    19342: SpiritShop
+    19362: Tebex
+    19364: THG Ingenuity
+    19385: Vendre
+    19408: Workarea
+    19410: X-Cart
+  affiliate:
+    18686: AWIN
+    18698: Impact
+    18697: GoAffPro
+    18709: Rakuten
+    18713: Rewardful
+    18722: Tradedoubler
+    18678: Admitad
+    18696: FirstPromoter
+    18721: Tolt
+    18707: Post Affiliate Pro
+    18693: Duel
+    18687: Booking.com
+    18703: Optimise
+    18711: RevenueHunt
+    18725: Webgains
+    18679: Affilae
+    18676: A8.net
+    18719: Tapfiliate
+    18682: Affiliatly
+    18714: ShoutOut
+    18704: Partnerize
+    18680: Affiliate B
+    18706: Pepperjam
+    18716: Skimlinks
+    18724: ValueCommerce
+    18718: Systeme.io
+    18690: Digistore24
+    18677: AccessTrade
+    18701: Moshimo
+    18710: Refersion
+    18702: Narrativ
+    18723: Upfluence
+    18695: FinanceAds
+    18717: Sovrn//Commerce
+    18681: Affiliate Future
+    18684: Affilo
+    18720: Tiqets
+  tracker:
+    19461: VOLUUM
+    19452: AdsBridge
+    19454: BeMob
+    19453: Appsflyer
+    19455: Binom
+    19460: thrivetracker
+    19457: FunnelFlux
+  arbitrages:
+    19503: Google Search
+    19504: Google Display
+range_filters:
+  target_age:
+    min: 18
+    max: 65
+    infinite: true
+  seen_counts:
+    min: 0
+    max: 999
+    infinite: true
+  video_duration:
+    min: 0
+    max: 600
+    infinite: true
+  days_running:
+    min: 0
+    max: 365
+    infinite: true
+  followers:
+    min: 0
+    max: 100000
+    infinite: true
+  likes:
+    min: 0
+    max: 1000
+    infinite: true
+  shares:
+    min: 0
+    max: 1000
+    infinite: true
+  favorites:
+    min: 0
+    max: 1000
+    infinite: true
+  comments:
+    min: 0
+    max: 1000
+    infinite: true
+  plays:
+    min: 0
+    max: 1000
+    infinite: true
+  domain_age:
+    min: 1
+    max: 1000
+    infinite: true
+  domain_monthly_traffic:
+    min: 1000
+    max: 1000000
+    infinite: true
+orderings:
+  updated_at: Newest
+  oldest: Oldest
+  popularity: Highest Engagement
+  most_relevant: Most Relevant
+  seen_counts: Most Seen
+  days_active: Longest Running
+  domain.traffic: Web Traffic

@@ -1,0 +1,19 @@
+{
+  "briefs": [
+    {
+      "id": "indie_hacker",
+      "platform": "meta",
+      "user_prompt": "I'm working on Draper.ai, an AI ad copywriter fine-tuned on tens of thousands of real ads that actually ran on Meta, TikTok, Google, X, Pinterest, and Reddit. The product is for indie hackers and solo founders who hate writing ad copy and don't have the budget for an agency. The painful insight: most generic AI tools spit out copy that sounds like a 2018 startup landing page — Draper sounds like a real performance marketer because it learned from ads that actually worked. I want a Meta ad — primary text, headline, description, CTA, and a one-line description of what the image should show (no text on the image). Tone: confident, direct, no hype words. Audience: solo founders launching their first paid campaign."
+    },
+    {
+      "id": "d2c_marketer",
+      "platform": "meta",
+      "user_prompt": "I'm running marketing at a Series A D2C startup and we ship creative across Meta, TikTok, and Pinterest weekly. My team is two people and our agency is too slow and too expensive. Draper.ai is a fine-tuned model that writes platform-shaped ad copy plus visual briefs in seconds, trained on ads that have proven to work. Write a Meta ad for me — primary text, headline, description, CTA, and a one-line image brief (no text in the image). Audience: in-house growth marketers at Series A startups, ages 28-40, who currently rely on agencies or generic GPT prompts. Tone: pragmatic, time-respecting, not breathless. Lead with the actual operational pain — slow agency turnaround, generic AI output — not with feature lists."
+    },
+    {
+      "id": "perf_consultant",
+      "platform": "meta",
+      "user_prompt": "Draper.ai is a domain-specialized AI ad copywriter. For independent performance marketing consultants, the edge over the next consultant down the street is creative output. Generic GPT prompts get you copy that 50 other consultants are also generating right now. Draper was fine-tuned on real ads with measured engagement signals, so the output sounds like ads that actually shipped and worked, not like ChatGPT. Write me a Meta ad — primary text, headline, description, CTA, and a one-line image brief (no text in the image). Audience: solo or two-person performance marketing consultants who run paid social for D2C clients. Tone: peer-to-peer, direct, slightly competitive. Don't sound like a SaaS landing page."
+    }
+  ]
+}

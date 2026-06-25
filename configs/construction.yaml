@@ -1,0 +1,99 @@
+# Draper.ai — Training Data Construction Configuration
+#
+# Copywriting-only after the 2026-04 pivot. The four other pattern-skill
+# formats are archived under `archive/construction/formats/`; see
+# `archive/README.md` for why.
+
+construction:
+  scored_ads_path: data/scored/v3/scored_ads.jsonl
+  output_dir: data/constructed
+  clusters_dir: data/constructed/_clusters
+  final_dir: data/final
+
+  # Post-filter targets are multiplied by overgeneration_buffer when
+  # deciding how many raw bundles to prepare. Re-tune with
+  # `construct.py cluster-report` if copywriting falls short of target.
+  overgeneration_buffer: 1.25
+
+  formats:
+    copywriting:
+      # Backtranslation mode (Humpback / Li et al. ICLR'24). Teacher sees a
+      # real high-performing ad and reverse-engineers the brief that would
+      # plausibly have produced it. Student learns brief → real copy.
+      target: 4500
+      score_min: 0.70
+      score_max: 1.00
+      valid_styles: [backtranslation]
+      style_ratios:
+        backtranslation: 1.00
+
+  clustering:
+    min_vertical_cluster: 30
+    # Cap each vertical at top-N copywriting-eligible ads by composite score,
+    # applied in clusterer.get_copywriting_ads. Prevents the head (saas,
+    # home_goods, electronics — 450-600 eligible each) from dominating the
+    # training mix.
+    #
+    # Run #003 (2026-05): bumped 200 → 400 alongside target 3000 → 4500. Run
+    # #002's eval plateau at 1.535 was structural (one-to-many brief→copy
+    # mapping), not data-starved, but +1,600–2,000 real golds at the top of
+    # each vertical's score distribution is the cheapest defensible move
+    # within the "real ads only" thesis constraint. Head verticals now share
+    # ~9% each; tail verticals untouched (~80 share each, capped by their
+    # own pool size).
+    max_per_vertical: 400
+    max_per_advertiser: 50
+    min_advertiser_cluster: 3
+    english_only: true   # filter to en-detected + undetectable-short ads only
+    format:
+      copywriting_min_copy_chars: 60  # total: headline + body + description + cta
+
+  api_mode:
+    bulk_model: claude-haiku-4-5-20251001
+    quality_model: claude-sonnet-4-20250514
+
+  # Fallback — kept for schema compatibility. Copywriting uses backtranslation
+  # via the per-format style_ratios above; this block is unused in practice.
+  prompt_style:
+    data_grounded_ratio:     0.30
+    context_distilled_ratio: 0.50
+    natural_ratio:           0.20
+    seed: 42
+
+  provider_rotation:
+    claude_ratio: 0.40
+    gpt_ratio:    0.35
+    gemini_ratio: 0.25
+
+  quality_filter:
+    min_response_length: 200
+    dedup_threshold: 0.80
+    prompt_dedup_threshold: 0.85
+    cross_format_source_dedup: true
+    quality_sample_pct: 0.10
+    min_quality_score: 3.0
+    min_quality_score_by_style:
+      data_grounded:     3.5
+      context_distilled: 4.0
+      natural:           3.5
+      backtranslation:   3.5
+
+  dataset:
+    train_ratio: 0.85
+    val_ratio: 0.075
+    test_ratio: 0.075
+
+  composition:
+    # Copywriting is single-turn only — its backtranslation premise (turn-1
+    # response is the real ad preserved verbatim) doesn't generalize to a
+    # turn-2 where the model would have to freestyle new copy.
+    multi_turn_rate: 0.0
+    followup_ratios:
+      constraint_change: 0.50
+      deep_dive:        0.35
+      correction:       0.15
+    difficulty_ratios:
+      standard:         0.60
+      sparse:           0.20
+      conflicting:      0.15
+      multi_constraint: 0.05

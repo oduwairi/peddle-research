@@ -1,0 +1,90 @@
+# Scoring-predictor (Phase 1) — text-only regressor for v3 ad-performance scores.
+# Loaded by draper.scoring_predictor.config.PredictorConfig.from_yaml().
+# Plan: ~/.claude/plans/ok-heres-important-point-indexed-minsky.md
+
+predictor:
+  # ---- Inputs --------------------------------------------------------------
+  corpus_path: data/scored/v3/scored_ads.parquet
+  splits_dir: data/scoring_predictor/splits
+  checkpoint_dir: data/scoring_predictor/checkpoints
+  # Which split to train on. One of: random, heldout-platform, heldout-vertical.
+  # The full eval suite re-runs train on each of the three; this is the default
+  # for `predict.py train` when no --split is given.
+  default_split: random
+
+  # ---- Model ---------------------------------------------------------------
+  # DeBERTa-v3-base picked over alternatives (see plan):
+  #   - frozen embedding + MLP head caps Spearman ~0.55–0.65
+  #   - DeBERTa-v3-large costs 2.5x for marginal gain
+  #   - DeBERTa-v3-base ~140M params, ~30ms CPU per ad, fits in <2h on A10G.
+  model_name: microsoft/deberta-v3-base
+  # 256 fits the vast majority of (headline + body + description) in our
+  # corpus and keeps disentangled-attention memory in check on consumer GPUs.
+  # Long tail (>256 tokens) gets truncated — acceptable for scoring.
+  max_seq_length: 256
+  dropout: 0.1
+
+  # ---- Training ------------------------------------------------------------
+  # Defaults are tuned for a 6 GB consumer GPU (RTX 3060 Mobile-class).
+  # DeBERTa-v3 uses disentangled attention which is more memory-hungry than
+  # vanilla attention, so per-device batch is small and gradient_checkpointing
+  # is on by default. Effective batch = 8 * 4 = 32.
+  # On a 16 GB+ card, raise per_device_train_batch_size to 32, drop
+  # gradient_accumulation_steps to 1, and disable gradient_checkpointing
+  # for ~2x training-throughput speedup.
+  # Backbone fine-tuning LR. The head learns at a much higher LR — see
+  # `head_learning_rate`. With a fresh-init head and pretrained backbone at
+  # the same LR, AdamW's weight decay drives the head toward zero before it
+  # develops discriminative signal → predict-the-mean collapse.
+  learning_rate: 2.0e-5
+  # Head LR is 5x backbone LR. The "10–30x" rule from common Kaggle DeBERTa
+  # recipes overshoots on this setup: attempts 4 and 5 both exploded at step
+  # 50 (loss=7927 and 938 respectively, NaN grad_norm) with head_lr=1e-3.
+  # Likely culprits are bf16 + gradient_checkpointing tightening tolerable
+  # gradient magnitude, or the pooled vector having larger norm than typical
+  # Kaggle setups. 1e-4 keeps the "head learns faster than backbone" benefit
+  # without the explosion risk; bump back up if predict-the-mean returns.
+  head_learning_rate: 1.0e-4
+  weight_decay: 0.01
+  warmup_ratio: 0.06
+  num_train_epochs: 4
+  per_device_train_batch_size: 8
+  per_device_eval_batch_size: 16
+  gradient_accumulation_steps: 4
+  # Linear schedule with warmup. Standard for fine-tuning encoders.
+  lr_scheduler_type: linear
+  # Loss is sum(MSE per head, masked) — head_weights lets us up/downweight.
+  # composite is the headline metric, but the sub-signal heads are part of the
+  # plan's explainability surface, so they share equal weight.
+  head_weights:
+    composite: 1.0
+    survivability: 1.0
+    engagement_volume: 1.0
+    engagement_velocity: 1.0
+  # Per-row sample weighting comes from training_quality (see data.py).
+  # Setting this false disables it (defensive switch for ablations).
+  use_quality_weights: true
+
+  # ---- Eval / early stopping ----------------------------------------------
+  eval_strategy: steps
+  eval_steps: 250
+  logging_steps: 50
+  save_steps: 250
+  # Spearman on the composite head is the early-stopping signal.
+  metric_for_best_model: spearman_composite
+  greater_is_better: true
+  early_stopping_patience: 3
+  load_best_model_at_end: true
+
+  # ---- Hardware ------------------------------------------------------------
+  # bf16 autocast on top of fp32 weights — the canonical mixed-precision
+  # setup. The earlier NaN failures (attempts 4–6) were caused by the
+  # backbone being loaded in fp16 (DeBERTa-v3-base's HF config default), not
+  # by bf16 itself. With `model.py` now forcing `torch_dtype=torch.float32`,
+  # bf16 autocast works correctly and saves ~40% activation memory vs fp32.
+  # gradient_checkpointing stays off — fp32-stored weights + bf16 activations
+  # fit comfortably at batch=8 / seq=256 on 6 GB VRAM.
+  fp16: false
+  bf16: true
+  gradient_checkpointing: false
+  seed: 42

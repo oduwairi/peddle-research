@@ -1,0 +1,69 @@
+{
+  "briefs": [
+    {
+      "id": "allbirds_tree_runners",
+      "platform": "meta",
+      "user_prompt": "Draft a Meta launch campaign for Allbirds Tree Runners. Audience: trail runners who care about sustainability. Product page: https://www.allbirds.com/products/mens-tree-runners-shoe"
+    },
+    {
+      "id": "liquid_death_severed_lime",
+      "platform": "tiktok",
+      "user_prompt": "Write a TikTok ad for Liquid Death sparkling water. Lean into the irreverent brand voice. https://liquiddeath.com/products/severed-lime"
+    },
+    {
+      "id": "ridge_wallet",
+      "platform": "meta",
+      "user_prompt": "Meta ad for the Ridge Wallet — minimalist EDC. Audience: men 25-45 sick of bulky leather bifolds. https://ridge.com/products/the-ridge-wallet"
+    },
+    {
+      "id": "linear_engineering",
+      "platform": "x",
+      "user_prompt": "X (Twitter) promoted post for Linear — issue tracking for high-velocity engineering teams. Tone: peer-to-peer, no SaaS-speak. https://linear.app"
+    },
+    {
+      "id": "tushy_classic",
+      "platform": "pinterest",
+      "user_prompt": "Pinterest ad for Tushy bidet. Audience: design-conscious renters who think bidets are foreign. https://hellotushy.com/products/tushy-classic-3-0"
+    },
+    {
+      "id": "ag1_biohackers",
+      "platform": "reddit",
+      "user_prompt": "Reddit ad for AG1 (Athletic Greens). Audience: r/biohackers crowd that's skeptical of supplement claims. https://drinkag1.com"
+    },
+    {
+      "id": "calm_search",
+      "platform": "google",
+      "user_prompt": "Google search ads for Calm — meditation app for people who can't sit still. Headlines + descriptions only. https://www.calm.com"
+    },
+    {
+      "id": "bombas_mission",
+      "platform": "meta",
+      "user_prompt": "Meta launch ad for Bombas socks. Lean into the buy-one-give-one mission. Audience: parents, gift-givers. https://bombas.com/collections/mens-socks"
+    },
+    {
+      "id": "hims_hair_loss",
+      "platform": "tiktok",
+      "user_prompt": "TikTok ad for Hims hair loss treatment. Audience: men in their 20s noticing thinning, embarrassed to ask. Voice: matter-of-fact, no shame. https://www.forhims.com/hair-loss"
+    },
+    {
+      "id": "patagonia_better_sweater",
+      "platform": "pinterest",
+      "user_prompt": "Pinterest ad for Patagonia Better Sweater fleece. Audience: PNW outdoor parents, Saturday morning trailhead crowd. https://www.patagonia.com/product/mens-better-sweater-fleece-jacket/25528.html"
+    },
+    {
+      "id": "thin_glossier",
+      "platform": "meta",
+      "user_prompt": "Meta ad for Glossier. https://www.glossier.com"
+    },
+    {
+      "id": "thin_notion",
+      "platform": "meta",
+      "user_prompt": "Write something for Notion that converts. https://notion.so"
+    },
+    {
+      "id": "thin_ag1_hook",
+      "platform": "tiktok",
+      "user_prompt": "TikTok hook for AG1."
+    }
+  ]
+}

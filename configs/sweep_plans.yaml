@@ -1,0 +1,167 @@
+# Draper.ai — AdFlex Collection Sweep Plans
+#
+# STRATEGY: Continuous collection with cursor checkpointing.
+# A "session" = one `collect run` invocation. A "loop" = milestone (multiple sessions + assessment).
+# Cursors saved per query. Sessions resume from where they left off.
+#
+# - Filter sweeps: 1 ordering (popularity) × geos, paginate deep
+# - Broad sweeps: multiple orderings × geos (ordering IS the diversity axis)
+# - Keyword sweeps: text search terms → different corpus slices (26% novelty vs baseline)
+# - Domain sweeps: url_chain search → highest novelty (78% novelty vs baseline)
+# - Pagination gives guaranteed unique ads; ordering/geo variation does not.
+# - Multi-ordering causes ~40% dedup (confirmed Loop 1).
+# - Keyword/domain experiment (Loop 7): baseline=0% novelty, keywords=26%, domains=78%.
+#
+# Usage:
+#   collect plan              — see all queries and pagination state
+#   collect run --budget 750  — run up to 750 API calls, resume from cursors
+#   collect assess            — review stats
+#   collect reset             — rebuild state from JSONL, reset cursors, archive legacy
+#   collect run --budget 500  — continue where you left off
+
+budget:
+  total_credits: 500000
+  credits_per_call: 100  # confirmed 2026-04-07
+  ads_per_page: 18
+
+# Geo: EN-only everywhere (Loop 5 Run 3+). Non-English contamination from
+# Europe/Asia/SA geos confirmed across Loops 3-5.
+geo_groups:
+  global: [1000001, 1000005, 1000006, 1000004]
+  en_only: [1000001]
+
+# --- Platform Sweep Definitions ---
+# Loop 7+: Keywords + domains ONLY. All old filter/broad sweeps retired —
+# they exhausted the popularity-sorted head of the corpus (31.4% dedup, 0% novelty).
+# Keyword/domain experiment showed 26-78% novelty vs existing 30K corpus.
+
+platforms:
+  facebook:
+    budget_pct: 0.15  # bumped from 5% — keywords/domains tap fresh corpus
+    sweeps:
+      - name: keywords_intent
+        description: CTA/action language — segments by advertiser intent
+        keywords: ["free trial", "shop now", "sign up", "learn more", "download",
+                   "limited time", "get started", "book now", "subscribe", "claim offer"]
+        orderings: [popularity, most_relevant]
+        geos: [1000001]
+
+      - name: keywords_vertical
+        description: Industry/vertical terms — segments by market
+        keywords: ["insurance", "real estate", "fitness", "crypto", "meal kit",
+                   "online course", "pet food", "skincare", "mattress", "solar"]
+        orderings: [popularity, most_relevant]
+        geos: [1000001]
+
+      - name: domains
+        description: Landing page domain search — 78% novelty vs baseline
+        domains: ["shopify", "amazon", "wordpress", "wix", "squarespace",
+                  "etsy", "substack", "gumroad", "clickfunnels", "hubspot",
+                  "notion", "canva", "stripe", "calendly", "zapier"]
+        orderings: [popularity, oldest]
+        geos: [1000001]
+
+      # --- RETIRED Loop 7 (exhausted) ---
+      # broad: 5.2% dedup but 0% novelty vs corpus
+      # ecommerce_tech, cms_tech, cta_intent, behaviors, format: filter×popularity exhausted
+      # performance_tiers, affiliate_funnels_tracker: same
+      # maturity_tiers: DROPPED Loop 5 — 2.8 yield/call
+      # scale: DROPPED Loop 5 — 5.9 yield/call
+
+
+  tiktok:
+    budget_pct: 0.30
+    sweeps:
+      - name: keywords_intent
+        keywords: ["shop now", "link in bio", "use code", "limited drop", "download",
+                   "free shipping", "duet this", "trending", "must have", "giveaway"]
+        orderings: [popularity, most_relevant]
+        geos: [1000001]
+
+      - name: keywords_vertical
+        keywords: ["skincare routine", "workout", "recipe", "fashion haul", "tech review",
+                   "gaming", "study with me", "home decor", "budget travel", "side hustle"]
+        orderings: [popularity, most_relevant]
+        geos: [1000001]
+
+      - name: domains
+        domains: ["shopify", "amazon", "tiktokshop", "linktree", "beacons",
+                  "stan.store", "etsy", "shein", "temu", "aliexpress"]
+        orderings: [popularity, oldest]
+        geos: [1000001]
+
+      # --- RETIRED Loop 7 (exhausted) ---
+      # broad, interest_verticals, ecommerce_tech, cta_intent: filter×popularity exhausted
+      # performance_tiers, video_duration: same
+
+
+  x:
+    budget_pct: 0.25
+    sweeps:
+      - name: keywords_intent
+        keywords: ["sign up", "join now", "limited time", "pre-order", "launching soon",
+                   "thread", "breaking", "exclusive", "beta access", "waitlist"]
+        orderings: [popularity, most_relevant]
+        geos: [1000001]
+
+      - name: keywords_vertical
+        keywords: ["fintech", "SaaS", "developer tools", "AI", "newsletter",
+                   "podcast", "B2B", "startup", "open source", "hiring"]
+        orderings: [popularity, most_relevant]
+        geos: [1000001]
+
+      - name: domains
+        domains: ["substack", "github", "notion", "linear", "vercel",
+                  "stripe", "shopify", "gumroad", "beehiiv", "convertkit"]
+        orderings: [popularity, oldest]
+        geos: [1000001]
+
+      # --- RETIRED Loop 7 (exhausted) ---
+      # broad, owner_categories, interest_verticals, performance_tiers: exhausted
+
+
+  pinterest:
+    budget_pct: 0.15
+    sweeps:
+      - name: keywords_intent
+        keywords: ["shop the look", "DIY", "recipe", "outfit inspo", "home decor",
+                   "gift guide", "wedding", "meal prep", "budget friendly", "before and after"]
+        orderings: [popularity, most_relevant]
+        geos: [1000001]
+
+      - name: domains
+        domains: ["etsy", "amazon", "shopify", "wayfair", "target",
+                  "ikea", "zara", "nordstrom", "sephora", "ulta"]
+        orderings: [popularity, oldest]
+        geos: [1000001]
+
+      # --- RETIRED Loop 7 (exhausted) ---
+      # broad, categories, performance_tiers: exhausted
+      # top_interests: DROPPED Loop 5 — 1.2 yield/call
+      # ecommerce_tech: DROPPED Loop 5 — 3.1 yield/call
+
+
+  reddit:
+    budget_pct: 0.15
+    sweeps:
+      - name: keywords_intent
+        keywords: ["sign up", "free trial", "download", "open source", "AMA",
+                   "deal", "discount code", "beta", "launching", "try free"]
+        orderings: [popularity, most_relevant]
+        geos: [1000001]
+
+      - name: keywords_vertical
+        keywords: ["gaming", "developer", "personal finance", "VPN", "productivity",
+                   "meal delivery", "therapy", "student", "remote work", "privacy"]
+        orderings: [popularity, most_relevant]
+        geos: [1000001]
+
+      - name: domains
+        domains: ["shopify", "squarespace", "nordvpn", "surfshark", "betterhelp",
+                  "audible", "skillshare", "notion", "grammarly", "canva"]
+        orderings: [popularity, oldest]
+        geos: [1000001]
+
+      # --- RETIRED Loop 7 (exhausted) ---
+      # broad, cta_intent, ecommerce_tech, performance_tiers: exhausted
+      # interests: DROPPED Loop 5 — 1.6 yield/call

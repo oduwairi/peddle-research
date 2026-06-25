@@ -1,0 +1,100 @@
+# Draper.ai — Construction v2 Configuration (image-brief skill)
+#
+# Sibling to configs/construction_v2.yaml. Selects ads whose creative is
+# captionable (image + carousel-first-frame; video / OTHER deferred),
+# runs the image-brief teacher on each, and writes training data under
+# data/constructed_v2_image/.
+#
+# The image-brief skill assumes a VLM caption has already been computed
+# for each source ad. Run `construct_v2 caption-submit` first; the
+# selector and teacher prompt will reject ads with no caption available.
+#
+# See docs/project/CONSTRUCTION_V2_ARCHITECTURE.md.
+
+construction_v2:
+  # Picks the image_brief gate bundle (see
+  # draper.construction_v2.ingest.skills) and the image_brief
+  # subdirectory layout under output_dir.
+  skill: image_brief
+
+  output_dir: data/constructed_v2_image
+  final_dir: data/final_v2_image
+  audit_dir: data/constructed_v2_image/_audit
+
+  selection:
+    scored_ads_path: data/scored/v3/scored_ads.jsonl
+    # Phase 1 corpus: ~26.4k image + carousel ads above min_composite.
+    # 3000 is the same production target as copywriting; smoke-tune via
+    # `select --target N`.
+    target_count: 3000
+    # 0.60 was chosen after the funnel audit (2026-05): at 0.70 the
+    # post-image-capable pool was only 2,822, below the 3,000 target;
+    # at 0.60 it's 5,184, giving stratified sampling real headroom.
+    # The composite floor is the dominant cut at this stage — see
+    # scripts/explore/image_brief_funnel.py for the per-floor sweep.
+    min_composite: 0.6
+    stratify: platform
+    allow_unbalanced: false
+    max_platform_share: 0.50
+
+    min_copy_chars: 30
+    english_only: true
+    drop_unsafe: true
+    content_safety_min_confidence: 0.9
+    unsafe_labels_to_drop:
+      - adult_sexual
+      - profanity
+      - shock_misleading
+      - substance_drugs
+    business_vertical_min_confidence: 0.5
+    drop_verticals:
+      - gambling_betting
+      - pharmaceuticals
+      - cannabis_cbd
+      - political_advocacy
+      - religious_faith
+    drop_religious_scripture: true
+    drop_structural_artifacts: true
+    min_training_quality: 3
+    seed: 42
+
+  # Image-brief teacher uses the same provider lineup. Model swap to
+  # a vision-capable variant is a data-only change here; the source
+  # ad copy + VLM caption are text content, so any text-capable model
+  # works at the teacher stage. (Captioning runs in a separate step.)
+  providers:
+    anthropic:
+      model: claude-sonnet-4-6
+      max_tokens: 4000
+      temperature: 0.4
+    openai:
+      model: gpt-5.4
+      max_tokens: 4000
+      temperature: 0.4
+    gemini:
+      model: gemini-3.1-pro-preview
+      max_tokens: 4000
+      temperature: 0.4
+
+  single_pass:
+    forbid_ngram_overlap: 5  # no-op for image_brief (leak=None — copy is verbatim brief input)
+                              # kept for config-shape parallelism with construction_v2.yaml
+    briefs_cache_path: data/constructed_v2_image/image_brief/briefs.jsonl
+
+  batch:
+    stuck_timeout_minutes: 360
+    auto_force_cancel: true
+    max_partial_error_rate: 0.05
+
+  filter:
+    dedup_similarity_threshold: 0.95
+    max_tokens: 8192
+    # Image-brief deliverables are prose art-direction briefs (shorter than
+    # copywriting deliverables) — relax the floor.
+    min_deliverable_chars: 20
+
+  dataset:
+    train_ratio: 0.90
+    val_ratio: 0.05
+    test_ratio: 0.05
+    seed: 42

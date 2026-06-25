@@ -1,0 +1,14 @@
+# Draper.ai — Agent Configuration
+# Populated in Phase 4
+
+agent:
+  max_steps: 5
+  timeout_seconds: 90
+
+tools:
+  web_search:
+    provider: tavily  # tavily or serper
+    max_results: 5
+  url_scraper:
+    timeout_seconds: 15
+    fallback_to_jina: true  # use Jina Reader API for JS-heavy pages

@@ -1,0 +1,47 @@
+# Data (not redistributed — see DATA.md)
+data/
+*.jsonl
+!docs/**/*.jsonl
+
+# Secrets
+.env
+.env.local
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual envs
+.venv/
+venv/
+env/
+
+# Training artifacts / model weights
+*.pt
+*.bin
+*.safetensors
+*.gguf
+checkpoints/
+outputs/
+wandb/
+trackio/
+
+# Caches
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# IDE / OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Claude
+.claude/

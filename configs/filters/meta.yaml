@@ -1,0 +1,1024 @@
+# AdFlex filter codes for meta
+# Auto-generated from adflex_exploration_raw.json
+
+platform: meta
+select_filters:
+  countries:
+    1000001: Top EN
+    1000002: Tier 1
+    1000003: North America
+    1000004: South America
+    1000005: Europe
+    1000006: Top Asia
+    1000007: Middle East
+    1000008: Africa
+    10219: United States
+    10217: United Kingdom
+    10269: Germany
+    10216: Australia
+    10229: Canada
+    10230: France
+    10211: Italy
+    10213: Netherlands
+    10268: Poland
+    10228: Belgium
+    10214: Spain
+    10215: Austria
+    10231: Switzerland
+    10316: Sweden
+    10271: Denmark
+    10266: Czech Republic
+    10311: Hungary
+    10314: Ireland
+    10400: Romania
+    10384: New Zealand
+    10350: Portugal
+    10261: Japan
+    10204: Greece
+    10285: Finland
+    10351: Norway
+    10267: Slovakia
+    10197: United Arab Emirates
+    10315: Israel
+    10406: Singapore
+    10233: Bulgaria
+    10340: Luxembourg
+    10309: Croatia
+    10339: Lithuania
+    10223: Slovenia
+    10199: India
+    10254: South Korea
+    10277: Estonia
+    10341: Latvia
+    10307: Hong Kong
+    10444: South Africa
+    10402: Saudi Arabia
+    10360: Malta
+    10264: Cyprus
+    10282: Mexico
+    10317: Iceland
+    10398: Qatar
+    10240: Brazil
+    10329: Kuwait
+    10374: Malaysia
+    10390: Philippines
+    10422: Thailand
+    10265: Turkey
+    10312: Indonesia
+    10256: Colombia
+    10352: Ukraine
+    10447: World Wide
+    10212: Argentina
+    10391: Pakistan
+    10440: Vietnam
+    10218: Egypt
+    10293: French Guiana
+    10299: Guadeloupe
+    10227: Bangladesh
+    10357: Martinique
+    10380: Nigeria
+    10279: Morocco
+    10300: Saint Martin
+    10399: "R\xE9union"
+    10321: Kenya
+    10336: Sri Lanka
+    10274: Algeria
+    10278: Iraq
+    10283: Nepal
+    10366: Aland Islands
+    10326: Mayotte
+    10387: Peru
+    10251: Chile
+    10255: Taiwan
+    10276: Ecuador
+    10224: Serbia
+    10304: Guatemala
+    10257: Costa Rica
+    10394: Puerto Rico
+    10437: Venezuela
+    10386: Panama
+    10222: Bosnia and Herzegovina
+    10433: Uruguay
+    10203: Albania
+    10397: Paraguay
+    10273: Dominican Republic
+    10347: Macedonia
+    10239: Bolivia
+    10415: El Salvador
+    10234: Bahrain
+    10253: China
+    10308: Honduras
+    10344: Moldova
+    10385: Oman
+    10258: Montenegro
+    10225: Kosovo
+    10320: Jordan
+    10275: Lebanon
+    10244: Belarus
+    10381: Nicaragua
+    10292: Georgia
+    10426: Tunisia
+    10343: Monaco
+    10323: Cambodia
+    10373: Jersey
+    10196: Andorra
+    10428: Trinidad and Tobago
+    10430: Tanzania
+    10294: Ghana
+    10319: Jamaica
+    10371: Isle Of Man
+    10331: Kazakhstan
+    10205: Armenia
+    10368: Guernsey
+    10434: Uzbekistan
+    10353: Mongolia
+    10313: Myanmar
+    10395: Palestine
+    10221: Azerbaijan
+    10356: Mauritius
+    10295: Gibraltar
+    10342: Libya
+    10446: "C\xF4te d'Ivoire"
+    10284: Ethiopia
+    10210: Angola
+    10335: Liechtenstein
+    10241: The Bahamas
+    10252: Cameroon
+    10286: Fiji
+    10410: Senegal
+    10445: Zambia
+    10237: Bermuda
+    10238: Brunei
+    10375: Mozambique
+    10289: Faroe Islands
+    10431: Uganda
+    10245: Belize
+    10306: Guyana
+    10361: Maldives
+    10345: Madagascar
+    10322: Kyrgyzstan
+    10249: Democratic Republic of the Congo
+    10332: Laos
+    10376: Namibia
+    10363: Zimbabwe
+    10198: Afghanistan
+    10243: Botswana
+    10401: Rwanda
+    10330: Cayman Islands
+    10220: Aruba
+    10362: Malawi
+    10310: Haiti
+    10412: Suriname
+    10226: Barbados
+    10369: Guam
+    10236: Benin
+    10262: Cape Verde
+    10439: US Virgin Islands
+    10411: Somalia
+    10333: Yemen
+    10388: French Polynesia
+    10348: Mali
+    10318: San Marino
+    10409: Sierra Leone
+    10354: Macau
+    10389: Papua New Guinea
+    10242: Bhutan
+    10337: Liberia
+    10421: Togo
+    10232: Burkina Faso
+    10298: Guinea
+    10206: "Cura\xE7ao"
+    10423: Tajikistan
+    10291: Grenada
+    10334: St. Lucia
+    10297: The Gambia
+    10404: Seychelles
+    10201: Antigua
+    10358: Mauritania
+    10417: Swaziland
+    10290: Gabon
+    10349: Timor-Leste
+    10338: Lesotho
+    10248: Republic of the Congo
+    10413: South Sudan
+    10235: Burundi
+    10438: British Virgin Islands
+    10208: Sint Maarten
+    10296: Greenland
+    10378: Niger
+    10302: Equatorial Guinea
+    10377: New Caledonia
+    10418: Turks and Caicos Islands
+    10419: Chad
+    10365: American Samoa
+    10436: Saint Vincent and the Grenadines
+    10327: Saint Kitts and Nevis
+    10441: Vanuatu
+    10443: Samoa
+    10305: Guinea-Bissau
+    10355: Northern Mariana Islands
+    10325: Comoros
+    10403: Solomon Islands
+    10272: Dominica
+    10270: Djibouti
+    10427: Tonga
+    10288: Federated States of Micronesia
+    10425: Turkmenistan
+    10247: Central African Republic
+    10414: Sao Tome and Principe
+    10396: Palau
+    10346: Marshall Islands
+    10250: Cook Islands
+    10324: Kiribati
+    10287: Falkland Islands
+    10408: Svalbard and Jan Mayen
+    10392: Saint Pierre and Miquelon
+    10301: "Saint Barth\xE9lemy"
+    10207: Bonaire, Sint Eustatius and Saba
+    10382: Nauru
+    10407: Saint Helena
+    10281: Eritrea
+    10429: Tuvalu
+    10202: Anguilla
+    10359: Montserrat
+    10442: Wallis and Futuna
+    10383: Niue
+    10379: Norfolk Island
+    10364: Antarctica
+    10435: Vatican City
+    10259: Russia
+    10424: Tokelau
+    10420: French Southern Territories
+    10393: Pitcairn
+    10280: Western Sahara
+    10209: Netherlands Antilles
+    10372: British Indian Ocean Territory
+    10246: Cocos (Keeling) Islands
+    10303: South Georgia and the South Sandwich Islands
+    10263: Christmas Island
+    10432: United States Minor Outlying Islands
+  gender:
+    10450: Any
+    10449: Female
+    10448: Male
+  publisher_platforms:
+    10457: Instagram
+    10456: Facebook
+    10459: Messenger
+    10458: Audience Network
+    16748: Threads
+  format:
+    image: Image
+    video: Video
+    carousel: Carousel
+    dynamic: Dynamic
+  languages:
+    9911: English
+    9920: German
+    9889: Unknown
+    9916: French
+    9978: Spanish
+    9963: Polish
+    9934: Italian
+    9910: Dutch
+    9935: Japanese
+    9908: Czech
+    9929: Hungarian
+    9964: Portuguese
+    9966: Romanian
+    9926: Hebrew
+    9981: Swedish
+    9909: Danish
+    9893: Arabic
+    9921: Greek
+    9941: Korean
+    9904: Chinese (Simplified)
+    9900: Bulgarian
+    9975: Slovak
+    9959: Norwegian
+    9915: Finnish
+    9947: Lithuanian
+    9986: Thai
+    9976: Slovenian
+    9987: Turkish
+    9907: Croatian
+    9932: Indonesian
+    9993: Vietnamese
+    9989: Ukrainian
+    9967: Russian
+    9913: Estonian
+    9946: Latvian
+    9970: Serbian
+    20352: Chinese
+    9930: Icelandic
+    9898: Bengali
+    9901: Catalan
+    9951: Malay
+    9914: Filipino
+    9899: Bosnian
+    9927: Hindi
+    9952: Malayalam
+    9912: Esperanto
+    9890: Afrikaans
+    10052: Norwegian Nynorsk
+    9974: Sinhala
+    9902: Cebuano
+    9990: Urdu
+    9918: Galician
+    9958: Nepali
+    9949: Macedonian
+    9962: Persian
+    9983: Tamil
+    9896: Basque
+    9891: Albanian
+    9919: Georgian
+    9955: Marathi
+    9948: Luxembourgish
+    9985: Telugu
+    9957: Myanmar (Burmese)
+    9895: Azerbaijani
+    9922: Gujarati
+    9939: Khmer
+    9980: Swahili
+    9937: Kannada
+    9942: Kurdish (Kurmanji)
+    9965: Punjabi
+    9956: Mongolian
+    10029: Interlingua
+    9994: Welsh
+    9945: Latin
+    9933: Irish
+    9953: Maltese
+    9894: Armenian
+    9917: Frisian
+    10055: Occitan
+    9897: Belarusian
+    9996: Yiddish
+    9938: Kazakh
+    9992: Uzbek
+    9944: Lao
+    10014: Breton
+    9950: Malagasy
+    9979: Sundanese
+    9892: Amharic
+    9961: Pashto
+    10075: Walloon
+    9984: Tatar
+    9960: Odia (Oriya)
+    9973: Sindhi
+    10007: Assamese
+    9977: Somali
+    9923: Haitian Creole
+    9999: Javanese
+    9991: Uyghur
+    10006: Aragonese
+    10061: Romansh
+    9982: Tajik
+    9969: Scots Gaelic
+    9943: Kyrgyz
+    9988: Turkmen
+    10060: Quechua
+    9997: Yoruba
+    10025: Guarani
+    9906: Corsican
+    10020: Divehi
+    10063: Sanskrit
+  type_call_to_actions:
+    10095: Learn More
+    10080: Shop Now
+    10092: Book Now
+    10096: Sign Up
+    10121: Order Now
+    10112: Send Message
+    10103: Apply Now
+    10106: Get Offer
+    10155: Visit Instagram Profile
+    10119: Get Quote
+    10097: Watch More
+    10152: Send Whatsapp Message
+    10098: No Button
+    10091: Download
+    10089: Install Now
+    10120: Contact Us
+    10079: Like Page
+    10115: Subscribe
+    10101: Call Now
+    10107: Buy Tickets
+    10081: Play Game
+    10114: Donate Now
+    10187: Send Instagram Message
+    10093: Listen Now
+    10149: Interested
+    10109: Get Directions
+    10135: See Menu
+    10134: Request Time
+    10139: Get Showtimes
+    10083: Use App
+    10105: Buy Now
+    10159: See More
+    10192: Visit Profile
+    10191: Get Promotions
+    10169: Get Access
+    10082: Install App
+    10078: Open Link
+    10184: Inquire Now
+    10117: Sell Now
+    10190: Join Group
+    10194: Explore More
+    10183: Get Updates
+    10163: Check Availability
+    10133: Save
+    10123: Add To Cart
+    10140: Try It
+    10122: Start Order
+    10154: Get Tickets
+    10179: Try In Camera
+    10166: Remind Me
+    10111: See Details
+    10094: Watch Video
+    10128: Register Now
+    10126: Vote Now
+    10170: Buy Gift Card
+    10193: Chat On Whatsapp
+    10085: Free Call
+    10158: Preregister
+  status:
+    '1': Active
+    '2': Inactive
+  special_category:
+    10451: Other
+    10454: Employment
+    10455: Housing
+    10453: Credit
+    10452: Political
+  owner_verified:
+    '1': Verified
+  cms:
+    16192: WordPress
+    15870: Adobe Experience Manager
+    15942: Drupal
+    15921: Contentful
+    16124: Sitecore
+    15986: HubSpot CMS Hub
+    16147: Storyblok
+    16189: Wix
+    16164: TYPO3 CMS
+    16148: Strapi
+    15929: Craft CMS
+    16089: Prismic
+    16136: Skolengo
+    16144: Squarespace
+    16057: Optimizely Content Management
+    15900: Builder.io
+    16166: Umbraco
+    15876: Amplience
+    16159: Tilda
+    16109: Sanity
+    15999: Joomla
+    15934: DatoCMS
+    16002: Kentico CMS
+    16077: Pimcore
+    15891: Bloomreach
+    16091: Progress Sitefinity
+    16014: Liferay
+    15943: Duda
+    16006: Kontent.ai
+    16046: October CMS
+    15937: Directus
+    16047: Odoo
+    15915: Concrete CMS
+    16146: Statamic
+    16017: Live Story
+    15924: CoreMedia Content Cloud
+    16125: Sitecore Experience Platform
+    16145: Squiz Matrix
+    15960: ExpressionEngine
+    15866: 1C-Bitrix
+    15945: Dynamicweb
+    15940: DNN
+    15917: Contao
+    16090: ProcessWire
+    15881: Arc XP
+    16132: Sitevision CMS
+    16031: Microsoft SharePoint
+    16152: Sulu
+    16049: Omni CMS
+    15969: Gnuboard
+    15885: Backdrop
+    16161: TN Express Web
+    16186: Weebly
+    16121: Silverstripe
+    15903: ButterCMS
+    15878: ApostropheCMS
+    15970: GoDaddy Website Builder
+    16030: microCMS
+    16114: SDL Tridion
+    16069: Phoenix Site
+    15897: Brightspot
+    16060: Orchard Core
+    16170: Varbase
+    16180: WebNode
+    15998: Jimdo
+    16027: MemberStack
+    15968: Ghost
+    16112: Scorpion
+    16042: Neos CMS
+    16033: MODX
+    16088: Prepr
+    15982: HCL Digital Experience
+    16085: Plone
+    16032: Milestone CMS
+    16580: Proximis Unified Commerce
+    15962: eZ Publish
+    16179: Weblium
+    15910: CloudCannon
+    15987: Ibexa DXP
+    16178: Weblication
+    16041: NationBuilder
+    16113: Scrivito
+    15966: Fork CMS
+    15975: GraphCMS
+    15931: CrownPeak
+    15939: DM Polopoly
+    16162: TownNews
+    15930: Cratejoy
+    15894: Bolt CMS
+    15888: Bentobox
+    15893: BoldGrid
+    16117: Shift4Shop
+    15919: Contensis
+    15978: Griddo
+    16158: Tiki Wiki CMS Groupware
+    16000: JouwWeb
+    16028: Methode
+    16058: Oracle Content Management
+    15989: imperia CMS
+    15972: Google Sites
+    16119: Shuttle
+    16053: OpenCms
+    16129: SiteManager
+    16035: Mono.net
+    16052: OpenCities
+    15965: FlexCMP
+    16008: Kooboo CMS
+    15912: CMS Made Simple
+    15877: Antee IPO
+    15925: Cosmic
+    15896: Botble CMS
+    15907: Chorus
+    15951: Elcom
+    15976: Grav
+    15991: ImpressPages
+    16016: Lithium
+    16143: SPIP
+    15996: Jahia DX
+    16106: Roadiz CMS
+    15938: Django CMS
+    16156: Thelia
+    16168: Unicorn Platform
+    16196: XpressEngine
+    15979: GX WebManager
+    16019: LocomotiveCMS
+    15871: Adobe Experience Manager Franklin
+    16187: WHMCS
+    15981: Hatena Blog
+    15964: Flazio
+    16094: PyroCMS
+    16107: RockRMS
+    16149: Strato Website
+    15868: a-blog cms
+    16039: Mura CMS
+    16141: Solodev
+    16172: Vignette
+    16080: Pixieset Website
+    16154: Telescope
+    16036: MotoCMS
+    15950: Ektron CMS
+    15906: Chameleon system
+    16135: Skilldo
+    15898: Brownie
+    16096: Quintype
+    16185: Webzie
+    16086: Popmenu
+    16009: Kotisivukone
+    15911: Cloudrexx
+    16120: SIDEARM Sports
+    16001: K-Sup
+    16083: PlatformOS
+    16128: Siteglide
+    16160: Tistory
+    16134: SixCMS
+    16018: LiveStreet CMS
+    16098: RBS Change
+    15967: GetSimple CMS
+    16003: Koala Framework
+    16138: Smartstore Page Builder
+    16108: Rubedo
+    16037: Movable Type
+    16055: OpenNemas
+    16101: Reactive
+    16122: "Simpl\xE9bo"
+    15899: BrowserCMS
+    16176: webEdition
+    15901: Business Catalyst
+    16095: Quick.CMS
+    15947: e107
+    15946: E-monsite
+    15914: Coaster CMS
+    16102: ReadMe
+    16174: Voog.com Website Builder
+    16079: pirobase CMS
+    15997: Jalios
+    16034: Moguta.CMS
+    16173: VIVVO
+    16133: Sivuviidakko
+    16081: Pixnet
+    16051: onpublix
+    16130: Sitepark IES
+    16167: UMI.CMS
+    16171: Vigbo
+    16191: Woltlab Community Framework
+    15916: Congressus
+    16131: Sitepark InfoSite
+    15933: DataLife Engine
+    16062: Pagekit
+    16070: PhotoShelter
+    16139: sNews
+    16045: Nukeviet CMS
+    15904: Caisy
+    16004: Koken
+    16099: RCMS
+    16155: Textpattern CMS
+    16177: WebGUI
+  funnels:
+    16565: ClickFunnels
+    16567: Instapage
+    16566: GetResponse
+    16569: Keap
+    16568: Kartra
+  ecommerce:
+    16232: Cart Functionality
+    16455: Shopify
+    16545: WooCommerce
+    16354: Magento
+    16209: Amazon Webstore
+    16428: Salesforce Commerce Cloud
+    16409: PrestaShop
+    16295: Fourthwall
+    16366: MSHOP
+    16231: Cafe24
+    16466: Shoptet
+    16457: Shopline
+    16433: SAP Commerce Cloud
+    16543: Wix eCommerce
+    16456: Shoplazza
+    16384: OpenCart
+    16220: BigCommerce
+    16486: Squarespace Commerce
+    16537: Webflow Ecommerce
+    16451: Shoper
+    16531: VTEX
+    16336: Kajabi
+    16306: Gomag
+    16521: Unas
+    16599: Pimcore
+    16467: Shopware
+    16316: IdoSell Shop
+    16464: Shoprenter
+    16311: HCL Commerce
+    16376: nopCommerce
+    16255: CS Cart
+    16506: Tiendanube
+    16253: Craft Commerce
+    16319: Imweb
+    16235: Centra
+    16424: Robin
+    16346: Lightspeed eCom
+    16385: Optimizely Commerce
+    16449: ShopBase
+    16240: CloudCart
+    16321: Intershop
+    16504: Ticimax
+    16413: PureCars
+    16202: Accesso
+    16317: Ikas
+    16588: 1C-Bitrix
+    16592: Dynamicweb
+    16394: OXID eShop
+    16378: Nuvemshop
+    16430: Salla
+    16561: Zid
+    16263: Drupal Commerce
+    16373: Neto
+    16273: Ecwid
+    16494: SummerCart
+    16396: OXID eShop Enterprise Edition
+    16392: osCommerce
+    16272: EcForce
+    16416: Quickbutik
+    16332: JTL Shop
+    16541: Wikinggruppen
+    16558: YouCan
+    16299: Future Shop
+    16511: Tray
+    16267: EasyDigitalDownloads
+    16200: Abicart
+    16503: ThriveCart
+    16387: Oracle Commerce Cloud
+    16374: NetSuite
+    16526: Visualsoft
+    16266: Easy Orders
+    16377: novomind iSHOP
+    16375: Next Total
+    16502: THG Ingenuity
+    16355: MakeShop
+    16270: EC-CUBE
+    16386: Oracle Commerce
+    16249: commercetools
+    16265: e-Shop Commerce
+    16454: ShopGold
+    16488: Storeden
+    16403: plentymarkets
+    16404: plentyShop LTS
+    16353: Magazord
+    16368: MyCashFlow
+    16483: Spryker
+    16338: Kibo Commerce
+    16268: EasyStore
+    16472: Sky-Shop
+    16548: X-Cart
+    16479: SoteShop
+    16399: Pattern by Etsy
+    16217: Base
+    16310: Haravan
+    16441: Selless
+    16412: Proximis Unified Commerce
+    16450: Shopcada
+    16282: eZ Publish
+    16606: Weblium
+    16496: Sylius
+    16499: TakeDrop
+    16296: Foxy.io
+    16395: OXID eShop Community Edition
+    16485: Square Online
+    16221: BigCommerce B2B Edition
+    16349: Loja Integrada
+    16397: OXID eShop Professional Edition
+    16244: ColorMeShop
+    16408: Powergap
+    16476: Snipcart
+    16260: Dokan
+    16475: SmartWeb
+    16269: ebisumart
+    16370: Nacelle
+    16347: Linx Commerce
+    16325: Irroba
+    16300: Fynd Platform
+    16538: Websale
+    16388: Orckestra
+    16279: ePages
+    16369: MyOnlineStore
+    16204: Aero Commerce
+    16523: Vendre
+    16481: Spree
+    16591: Cratejoy
+    16478: Solusquare OmniCommerce Cloud
+    16245: Commerce Server
+    16297: Freshop
+    16359: Microsoft Dynamics 365 Commerce
+    16230: BSmart
+    16323: Inveon
+    16343: Kooomo
+    16527: Vnda
+    16361: Miva
+    16602: Shift4Shop
+    16234: CCV Shop
+    16254: Crystallize
+    16301: Gambio
+    16427: Salesfloor
+    16328: Jetshop
+    16326: J2Store
+    16411: Proximis
+    16247: Commerce7
+    16333: Jumpseller
+    16432: Sana Commerce
+    16305: GoDaddy Online Store
+    16280: Estore Shopserve
+    16379: Ochanoko
+    16348: LogiCommerce
+    16344: KQS.store
+    16443: Sellingo
+    16248: Commercelayer
+    16197: 24nettbutikk
+    16356: MakeShopKorea
+    16554: Yampi Virtual store
+    16363: Mobify
+    16493: Subbly
+    16556: YNAP Ecommerce
+    16473: Smartstore
+    16544: WiziShop
+    16393: Oxatis
+    16560: Zen Cart
+    16406: Podia
+    16228: Botble CMS
+    16519: Ueeshop
+    16330: JoomShopping
+    16211: AptusShop
+    16492: stores.jp
+    16525: VirtueMart
+    16540: Welcart
+    16309: Gumroad
+    16495: Swell
+    16436: Scalefast
+    16518: Ubiliz
+    16546: Workarea
+    16335: k-eCommerce
+    16289: Fbits
+    16418: Rain
+    16462: Shoppub
+    16604: Thelia
+    16259: DigitalRiver
+    16224: Bizweb
+    16533: wap.store
+    16542: WineDirect
+    16520: UltraCart
+    16275: EKM
+    16446: Sharetribe
+    16528: Volusion
+    16264: Dukaan
+    16534: wBuy
+    16219: Big Cartel
+    16553: Yahoo! Ecommerce
+    16552: xtCommerce
+    16298: FurnitureDealer
+    16290: Fenicio
+    16239: Cleverbridge
+    16402: PlatinMarket
+    16367: My Food Link
+    16590: Chameleon system
+    16549: Xanario
+    16302: GEOvendas
+    16489: StoreHippo
+    16242: CloudSuite
+    16233: Cart.com
+    16250: Convertr
+    16589: Brownie
+    16447: Shopaholic
+    16607: Webzie
+    16474: Smartstore biz
+    16512: TRISOshop
+    16342: KobiMaster
+    16463: Shoppy
+    16420: RedCart
+    16482: Spring for creators
+    16415: Quick.Cart
+    16600: RBS Change
+    16431: Saly
+    16201: ABOUT YOU Commerce Suite
+    16477: SoftTr
+    16308: GrocerKey
+    16341: KMK
+    16213: ARI Network Services
+    16535: Web Shop Manager
+    16468: ShopWired
+    16513: Tritac Katana Commerce
+    16601: Reactive
+    16334: Justo
+    16307: GrandNode
+    16551: Xretail
+    16562: Zoey
+    16205: Afosto
+    16380: ocStore
+    16400: PinnacleCart
+    16514: Trove Recommerce
+    16258: Digital Showroom
+    16417: QuickSell
+    16605: Voog.com Website Builder
+    16285: Fast Checkout
+    16262: Drubbit
+    16372: NEO - Omnichannel Commerce Platform
+    16596: Moguta.CMS
+    16198: 42stores
+    16256: CubeCart
+    16517: Ubercart
+    16274: eDokan
+    16507: Tiktak Pro
+    16206: AfterBuy
+    16229: Bsale
+    16251: Correos Ecommerce
+    16555: Yepcomm
+    16470: Simplo7
+    16487: StackCommerce
+    16320: inSales
+    16324: iPresta
+    16423: RND
+    16331: JShop
+    16490: Storeino
+    16515: TrueCommerce
+    16598: PhotoShelter
+    16401: Pixieset Store
+    16557: Yoori
+    16459: Shopmatic
+    16238: City Hive
+    16287: Fastspring
+    16364: Modified
+    16410: Projesoft
+    16429: Salesnauts
+    16509: TotalCode
+    16539: Webx
+  affiliate:
+    15825: AWIN
+    15836: GoAffPro
+    15837: Impact
+    15848: Rakuten
+    15850: RevenueHunt
+    15821: Affiliatly
+    15864: Webgains
+    15846: Post Affiliate Pro
+    15845: Pepperjam
+    15849: Refersion
+    15861: Tradedoubler
+    15815: A8.net
+    15818: Affilae
+    15855: Skimlinks
+    15858: Tapfiliate
+    15817: Admitad
+    15835: FirstPromoter
+    15852: Rewardful
+    15842: Optimise
+    15816: AccessTrade
+    15819: Affiliate B
+    15863: ValueCommerce
+    15840: Moshimo
+    15841: Narrativ
+    15832: Duel
+    15829: Digistore24
+    15862: Upfluence
+    15860: Tolt
+    15856: Sovrn//Commerce
+    15843: Partnerize
+    15853: ShoutOut
+    15823: Affilo
+    15820: Affiliate Future
+    15826: Booking.com
+    15827: Clickbank
+    15844: PayKickStart
+    15857: Systeme.io
+    15859: Tiqets
+    15824: Amazon Associates
+    15830: Dovetale
+    15833: eBay Partner Network
+    15839: LinkMink
+    15847: Pretty Links
+    15834: FinanceAds
+    15865: Webolytics
+    15838: JANet
+  tracker:
+    16570: AdsBridge
+    16579: VOLUUM
+    16572: BeMob
+    16573: Binom
+    16575: FunnelFlux
+    16577: REDTRACK
+    16571: Appsflyer
+    16578: thrivetracker
+    16574: CPV Lab
+  arbitrages:
+    19501: Google Search
+    19502: Google Display
+range_filters:
+  target_age:
+    min: 18
+    max: 65
+    infinite: true
+  seen_counts:
+    min: 0
+    max: 1000000
+    infinite: true
+  days_running:
+    min: 0
+    max: 365
+    infinite: true
+  followers:
+    min: 0
+    max: 100000
+    infinite: true
+  instagram_followers:
+    min: 0
+    max: 100000
+    infinite: true
+  domain_age:
+    min: 1
+    max: 1000
+    infinite: true
+  domain_monthly_traffic:
+    min: 1000
+    max: 1000000
+    infinite: true
+orderings:
+  updated_at: Newest
+  oldest: Oldest
+  most_relevant: Most Relevant
+  seen_counts: Most Reach
+  days_active: Longest Running
+  domain.traffic: Web Traffic

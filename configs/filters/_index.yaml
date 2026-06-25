@@ -1,0 +1,33 @@
+# AdFlex filter index — auto-generated
+
+platforms:
+- file: facebook.yaml
+  platform: facebook
+  range_filters: 10
+  select_filters: 15
+  total_codes: 1197
+- file: meta.yaml
+  platform: meta
+  range_filters: 7
+  select_filters: 15
+  total_codes: 968
+- file: tiktok.yaml
+  platform: tiktok
+  range_filters: 12
+  select_filters: 13
+  total_codes: 715
+- file: x.yaml
+  platform: x
+  range_filters: 12
+  select_filters: 16
+  total_codes: 1968
+- file: pinterest.yaml
+  platform: pinterest
+  range_filters: 10
+  select_filters: 18
+  total_codes: 1285
+- file: reddit.yaml
+  platform: reddit
+  range_filters: 7
+  select_filters: 16
+  total_codes: 674

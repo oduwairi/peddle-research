@@ -1,0 +1,290 @@
+# Draper.ai — Marketing personas for training data diversity.
+#
+# Each persona shapes how a training-example user prompt is voiced. The
+# chat agent receives one persona per example and is asked to reshape
+# the seed question into that persona's voice, then respond.
+#
+# Goals:
+#   - 18-22 personas spanning roles, tone, sophistication, and budget tier
+#   - Mix of realistic prompt-writers (SMB owners, CMOs, copywriters,
+#     agencies, growth leads, investors looking at a market)
+#   - Attributes drive tone/phrasing; the chat agent will naturally vary
+#     syntax, formality, and detail level per persona.
+#
+# Weighting: uniform sampling over 20+ personas over-represents narrow
+# specialists (enterprise regional lead, mobile UA, retention, SEO) in
+# the training mix relative to how often those voices actually commission
+# copy in the wild. Weights bias sampling toward broadly-applicable
+# voices (agency, junior copywriter, paid social, DTC, performance, solo
+# consultant) and down-weight specialists so they still appear but don't
+# dominate. Omit `weight` to default to 1.0.
+
+personas:
+  - id: smb_founder_first_ads
+    role: SMB founder, first time running ads
+    tone: casual, slightly anxious, writes in lowercase sometimes
+    sophistication: low
+    budget: very small (under $500/month)
+    industry: small online store (ecommerce)
+    scale: small
+    weight: 2.0
+    # Small-store owner would not realistically commission a theatre
+    # production, political op-ed, brokerage ad, or nonprofit campaign.
+    blocked_verticals:
+      - media_entertainment
+      - nonprofit_charity
+      - news_politics
+      - finance
+      - crypto_web3
+
+  - id: dtc_growth_lead
+    role: growth lead at a DTC brand
+    tone: direct, metrics-focused, mild swagger
+    sophistication: high
+    budget: mid ($10K-50K/month)
+    industry: DTC consumer brand
+    scale: mid
+    weight: 3.0
+
+  - id: agency_strategist
+    role: strategist at a boutique digital agency
+    tone: articulate, uses industry jargon freely, confident
+    sophistication: high
+    budget: n/a (advising clients)
+    industry: multi-client agency
+    scale: any
+    weight: 3.0
+
+  - id: brand_cmo
+    role: CMO at a mid-market company
+    tone: polished, strategic, big-picture, prefers structured answers
+    sophistication: high
+    budget: large ($100K+/month)
+    industry: B2B software or established consumer brand
+    scale: large
+    weight: 2.0
+
+  - id: performance_marketer_cynical
+    role: performance marketer with 5+ years experience
+    tone: skeptical of "best practices", wants evidence, direct
+    sophistication: very high
+    budget: varies
+    industry: performance-led businesses
+    scale: any
+    weight: 3.0
+
+  - id: junior_copywriter
+    role: junior copywriter at a small team
+    tone: eager, curious, asks basic tactical questions
+    sophistication: low-to-medium
+    budget: n/a (creative, not buying)
+    industry: any
+    scale: any
+    weight: 3.0
+
+  - id: media_planner
+    role: media planner at a mid-size agency
+    tone: professional, channel-focused, budget-conscious
+    sophistication: high
+    budget: mid-to-large client budgets
+    industry: multi-client media
+    scale: any
+    weight: 2.0
+
+  - id: solo_consultant
+    role: solo marketing consultant
+    tone: pragmatic, cost-aware, helps multiple small clients
+    sophistication: high
+    budget: small per client
+    industry: mixed freelance portfolio
+    scale: small
+    weight: 3.0
+
+  - id: ecommerce_shopify_owner
+    role: Shopify store owner scaling from $10K to $100K/month
+    tone: hands-on, slightly informal, asks specific tactical questions
+    sophistication: medium
+    budget: growing ($2K-10K/month)
+    industry: ecommerce, niche physical products
+    scale: mid
+    weight: 2.0
+    # Fix for review batch Ex 6 (ecommerce persona on theatre ad). A
+    # Shopify store owner doesn't commission theatre, political, charity,
+    # brokerage, or B2B SaaS creative.
+    blocked_verticals:
+      - media_entertainment
+      - nonprofit_charity
+      - news_politics
+      - finance
+      - saas_software
+
+  - id: saas_founder_technical
+    role: technical founder of a B2B SaaS
+    tone: logical, hates fluff, asks for frameworks
+    sophistication: medium on marketing, high on product
+    budget: limited ($1K-5K/month)
+    industry: B2B SaaS
+    scale: mid
+    weight: 1.0
+    blocked_verticals:
+      - fashion_beauty
+      - travel_hospitality
+      - media_entertainment
+      - nonprofit_charity
+      - news_politics
+      - real_estate_home
+
+  - id: nonprofit_comms_lead
+    role: communications lead at a nonprofit
+    tone: earnest, mission-driven, budget-constrained
+    sophistication: medium
+    budget: very small
+    industry: nonprofit / social impact
+    scale: any
+    weight: 0.5
+    # This persona's voice is strongly tied to nonprofit/cause work;
+    # allowlist rather than denylist.
+    allowed_verticals:
+      - nonprofit_charity
+      - education
+      - health_wellness
+
+  - id: paid_social_specialist
+    role: paid social specialist at an agency
+    tone: tactical, platform-specific language (ROAS, CPM, CPA)
+    sophistication: very high
+    budget: client-dependent
+    industry: paid social
+    scale: any
+    weight: 3.0
+
+  - id: brand_marketer_traditional
+    role: brand marketer from a traditional (print/TV) background
+    tone: thoughtful, story-driven, newer to digital tactics
+    sophistication: high on brand, medium on digital
+    budget: mid
+    industry: CPG or consumer
+    scale: large
+    weight: 1.0
+
+  - id: creator_entrepreneur
+    role: content creator monetizing their audience
+    tone: casual, personal, treats marketing as extension of voice
+    sophistication: medium, self-taught
+    budget: small ($500-5K/month)
+    industry: creator economy / digital products
+    scale: small
+    weight: 1.0
+    blocked_verticals:
+      - news_politics
+      - nonprofit_charity
+      - finance
+      - crypto_web3
+      - real_estate_home
+      - media_entertainment
+
+  - id: b2b_demand_gen
+    role: demand gen manager at a B2B company
+    tone: structured, ABM-flavored, metric-heavy
+    sophistication: high
+    budget: mid-to-large
+    industry: B2B enterprise sales
+    scale: mid
+    weight: 2.0
+
+  - id: local_business_owner
+    role: owner of a local service business (home services, fitness, food)
+    tone: no-nonsense, wants concrete local-targeting advice
+    sophistication: low-to-medium
+    budget: small ($200-2K/month)
+    industry: local services
+    scale: small
+    weight: 1.0
+    blocked_verticals:
+      - saas_software
+      - crypto_web3
+      - news_politics
+      - nonprofit_charity
+      - gaming
+      - media_entertainment
+      - fashion_beauty
+
+  - id: startup_marketing_hire_one
+    role: first marketing hire at an early-stage startup
+    tone: overwhelmed, wearing many hats, asks big scope questions
+    sophistication: medium, generalist
+    budget: tight ($1K-5K/month)
+    industry: early-stage startup
+    scale: small
+    weight: 1.0
+
+  - id: mobile_app_growth_lead
+    role: growth lead at a mobile app company
+    tone: data-native, user-acquisition language (CAC, LTV, retention)
+    sophistication: very high on growth, specific to mobile
+    budget: large
+    industry: mobile app / gaming / fintech app
+    scale: mid
+    weight: 0.5
+    # Mobile app growth leads commission app-install and fintech-app
+    # creative; not physical-world verticals like travel, home services,
+    # theatre, or charity.
+    blocked_verticals:
+      - travel_hospitality
+      - real_estate_home
+      - media_entertainment
+      - nonprofit_charity
+      - news_politics
+
+  - id: reddit_marketer
+    role: community-first marketer who lives on Reddit / niche forums
+    tone: anti-corporate, values authenticity, suspicious of "ads" framing
+    sophistication: high on organic, medium on paid
+    budget: small
+    industry: niche community-driven brands
+    scale: small
+    weight: 0.5
+
+  - id: enterprise_global_brand
+    role: regional marketing lead at a Fortune 500 brand
+    tone: formal, global-perspective, process-heavy
+    sophistication: high
+    budget: very large
+    industry: global enterprise
+    scale: large
+    weight: 0.5
+
+  - id: email_lifecycle_marketer
+    role: email / lifecycle marketer at a DTC or subscription brand
+    tone: inbox-aware, segment-conscious, respects the opt-in
+    sophistication: high
+    budget: mid (channel-specific tooling + list ops)
+    industry: DTC, subscription, ecommerce
+    scale: mid
+    weight: 0.5
+    # Email copywriting is a distinct discipline (subject lines, preview
+    # text, send-time sensitivity). Vertical blocks reflect categories
+    # where email's a secondary or prohibited channel.
+    blocked_verticals:
+      - gambling_betting
+      - news_politics
+
+  - id: seo_content_marketer
+    role: SEO / content marketer at a B2B SaaS or publisher
+    tone: intent-match-oriented, natural-language-forward, thinks in SERP shapes
+    sophistication: high
+    budget: small to mid (content ops, not paid)
+    industry: B2B SaaS, digital publishers, marketplaces
+    scale: mid
+    weight: 0.5
+    blocked_verticals:
+      - gambling_betting
+
+  - id: retention_lifecycle_lead
+    role: retention / lifecycle lead at a subscription business
+    tone: LTV-focused, measured, friction-sensitive
+    sophistication: high
+    budget: mid (CRM + winback ops)
+    industry: subscription SaaS, streaming, DTC subscription
+    scale: mid
+    weight: 0.5

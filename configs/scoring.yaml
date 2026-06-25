@@ -1,0 +1,38 @@
+# Draper.ai — Composite Performance Scoring Configuration
+# Weights subject to calibration after IRA proxy validation
+
+signals:
+  longevity:
+    weight: 0.30
+    transform: log  # log-scaled days running
+  engagement_volume:
+    weight: 0.25
+    transform: log  # log(likes + comments + shares)
+  engagement_velocity:
+    weight: 0.25
+    transform: linear  # engagement / days
+  early_death:
+    weight: 0.20
+    transform: binary  # penalty if < threshold days
+    threshold_days: 3
+
+tiers:
+  high: 0.80   # top 20%
+  medium: 0.30  # middle 50% (0.30 to 0.80)
+  low: 0.0     # bottom 30%
+
+# v2 Snorkel scorer — labeling function thresholds
+snorkel:
+  high_pct: 0.80           # percentile above which LFs vote HIGH
+  low_pct: 0.20            # percentile below which LFs vote LOW
+  early_death_days: 3      # hard rule: longevity < this → LOW
+  long_runner_days: 90     # hard rule: longevity > this → HIGH
+
+# v3 Hybrid scorer — signal weights. survivability replaces v1's
+# longevity (0.30) + early_death (0.20) into one KM-survival signal.
+# Zero-engagement ads contribute 0.0 to engagement signals (not None),
+# so survivability alone can't drive a composite past ~0.5.
+hybrid_v3:
+  survivability: 0.50
+  engagement_volume: 0.25
+  engagement_velocity: 0.25

@@ -1,0 +1,287 @@
+# Draper.ai — Expanded Vertical Sweep (final burn — 320 calls)
+#
+# Round 3-4 finding: FB has unlimited depth on AdFlex; TT/X/Pinterest
+# exhaust at 2-3 pages on "universal" keywords. Adding platform-native
+# vocabulary per platform to give TT/X/Pinterest real inventory to chew through.
+# Budget rebalanced to force non-FB spending.
+#
+# Run with: collect run --budget 320 --plan-path configs/sweep_plans_probe.yaml --max-pages 20 --auto
+
+budget:
+  total_credits: 500000
+  credits_per_call: 100
+  ads_per_page: 18
+
+geo_groups:
+  en_only: [1000001]
+
+platforms:
+  facebook:
+    budget_pct: 0.15
+    sweeps:
+      - name: expanded_verticals
+        description: Keep existing FB keywords (already strong yield); budget limited to force share to other platforms
+        keywords:
+          # Local / home services
+          - "emergency plumber"
+          - "roof repair"
+          - "hvac service"
+          - "pest control near me"
+          - "electrician near me"
+          - "house cleaning service"
+          - "lawn care service"
+          - "junk removal"
+          - "garage door repair"
+          - "locksmith"
+          # Insurance
+          - "auto insurance quote"
+          - "life insurance"
+          - "home insurance"
+          - "pet insurance"
+          - "health insurance plan"
+          # Legal
+          - "personal injury lawyer"
+          - "immigration attorney"
+          - "bankruptcy attorney"
+          - "estate planning"
+          - "family lawyer"
+          # Senior
+          - "hearing aids"
+          - "medicare advantage"
+          - "assisted living"
+          - "reverse mortgage"
+          - "senior care"
+          # Trades / vocational
+          - "cdl training"
+          - "welding certification"
+          - "cosmetology school"
+          - "nursing program"
+          - "trade school near me"
+          # Kids / parenting
+          - "baby stroller"
+          - "daycare near me"
+          - "toddler toys"
+          - "baby monitor"
+          - "kids activities near me"
+          # Professional services
+          - "tax preparation"
+          - "bookkeeping service"
+          - "financial advisor"
+          - "business consulting"
+          # Home security / smart home
+          - "security camera system"
+          - "home alarm system"
+          - "smart doorbell"
+          # Automotive services
+          - "car detailing"
+          - "oil change near me"
+          - "auto body repair"
+          - "tire shop"
+          # Supplements / wellness
+          - "collagen peptides"
+          - "gut health supplement"
+          - "prenatal vitamins"
+          - "cbd gummies"
+          # Health niches
+          - "hair loss treatment"
+          - "teeth whitening"
+          - "sleep apnea"
+          - "laser eye surgery"
+        orderings: [popularity]
+        geos: [1000001]
+
+  tiktok:
+    budget_pct: 0.35
+    sweeps:
+      - name: expanded_verticals
+        description: TikTok-native consumer/trend vocabulary — much bigger inventory than generic vertical terms
+        keywords:
+          # Existing (partial) — kept
+          - "collagen peptides"
+          - "gut health"
+          - "protein powder"
+          - "creatine"
+          - "apple cider vinegar gummies"
+          - "teeth whitening"
+          - "hair growth"
+          - "acne treatment"
+          - "posture corrector"
+          - "home renovation"
+          - "diy project"
+          - "apartment makeover"
+          - "room transformation"
+          - "subscription box"
+          - "unboxing haul"
+          - "mystery box"
+          - "snack box"
+          - "board games"
+          - "trading cards"
+          - "lego build"
+          - "craft project"
+          - "home workout"
+          - "gym membership"
+          - "yoga class"
+          - "personal trainer"
+          - "content creator"
+          - "side hustle"
+          - "passive income"
+          - "online business"
+          - "wedding planning"
+          - "bridal makeup"
+          - "online therapy"
+          - "meditation app"
+          # NEW — TikTok-native trend/consumer vocab
+          - "cold plunge"
+          - "pilates reformer"
+          - "tinted sunscreen"
+          - "air fryer recipes"
+          - "stanley cup"
+          - "lash serum"
+          - "weighted vest"
+          - "sauna blanket"
+          - "amazon finds"
+          - "viral products"
+          - "get ready with me"
+          - "night routine"
+          - "morning routine"
+          - "clean girl aesthetic"
+          - "skincare dupes"
+          - "makeup dupes"
+          - "cleantok"
+          - "booktok"
+          - "high protein meal"
+          - "30 minute meal"
+          - "iced coffee recipe"
+          - "shein haul"
+          - "target finds"
+          - "sol de janeiro"
+          - "drunk elephant"
+          - "laneige lip mask"
+          - "glow up"
+          - "small wardrobe"
+          - "under $20"
+          - "viral amazon"
+          - "probiotic skincare"
+          - "silk bonnet"
+        orderings: [popularity]
+        geos: [1000001]
+
+  x:
+    budget_pct: 0.30
+    sweeps:
+      - name: expanded_verticals
+        description: X-native developer/startup/B2B/crypto vocabulary
+        keywords:
+          # Existing — kept
+          - "sales automation"
+          - "hiring remotely"
+          - "construction software"
+          - "fleet management"
+          - "legaltech"
+          - "creator economy"
+          - "newsletter growth"
+          - "podcast launch"
+          - "course creator"
+          - "resume writing"
+          - "career coach"
+          - "remote jobs"
+          - "freelance developer"
+          - "neobank"
+          - "expense management"
+          - "payroll software"
+          - "marketing agency"
+          - "accounting software"
+          - "managed IT services"
+          - "cybersecurity"
+          # NEW — X-native developer/startup/tech
+          - "llm"
+          - "ai agent"
+          - "prompt engineering"
+          - "yc startup"
+          - "seed round"
+          - "series a"
+          - "github copilot"
+          - "cursor ide"
+          - "claude code"
+          - "open source"
+          - "developer tools"
+          - "api first"
+          - "kubernetes"
+          - "devops"
+          - "saas metrics"
+          - "arr growth"
+          - "no code"
+          - "low code"
+          - "substack"
+          - "beehiiv"
+          - "crypto wallet"
+          - "defi"
+          - "solana"
+          - "ethereum"
+          - "stablecoin"
+          - "ai safety"
+          - "product hunt"
+          - "indie hacker"
+          - "build in public"
+        orderings: [popularity]
+        geos: [1000001]
+
+  pinterest:
+    budget_pct: 0.20
+    sweeps:
+      - name: expanded_verticals
+        description: Pinterest-native aesthetic/DIY/lifestyle vocabulary
+        keywords:
+          # Existing — kept
+          - "wedding venue"
+          - "bridal shower ideas"
+          - "wedding decor"
+          - "engagement ring"
+          - "wedding cake"
+          - "garden ideas"
+          - "patio furniture"
+          - "kitchen renovation"
+          - "bathroom remodel"
+          - "toddler activities"
+          - "nursery decor"
+          - "baby shower ideas"
+          - "kids birthday party"
+          - "meal prep ideas"
+          - "slow cooker recipes"
+          - "baking supplies"
+          - "crochet pattern"
+          - "candle making"
+          - "pottery class"
+          - "party planning"
+          - "holiday decorations"
+          # NEW — Pinterest-native aesthetic/DIY
+          - "kitchen aesthetic"
+          - "dream closet"
+          - "capsule wardrobe"
+          - "fall outfits"
+          - "spring outfits"
+          - "summer outfits"
+          - "cottagecore"
+          - "coastal grandmother"
+          - "modern farmhouse"
+          - "minimalist bedroom"
+          - "neutral aesthetic"
+          - "tablescape"
+          - "dinner party"
+          - "recipe organization"
+          - "home office setup"
+          - "reading nook"
+          - "bridesmaid dresses"
+          - "engagement photos"
+          - "nail designs"
+          - "hair inspiration"
+          - "vision board"
+          - "bullet journal"
+          - "closet organization"
+          - "pantry makeover"
+          - "first apartment"
+          - "dorm room ideas"
+          - "curly hair routine"
+          - "book aesthetic"
+        orderings: [popularity]
+        geos: [1000001]

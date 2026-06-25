@@ -1,0 +1,81 @@
+# RunPod serverless vLLM deployment for the merged Draper model.
+#
+# Sibling of `deploy/modal_vllm.py`. Apply with:
+#
+#   uv run python deploy/runpod_vllm.py apply
+#
+# Auth: export RUNPOD_API_KEY=... (get from https://runpod.io/console/user/settings)
+# HF token + vLLM API key are passed through as worker env vars (the
+# RunPod template stores them; they are not encrypted secrets the way
+# Modal's `modal.Secret` is, so prefer per-template values you can rotate).
+#
+# Subfolder caveat: the Modal deploy points vLLM at `oduwairi/draper-qwen3-8b/merged/`
+# via a pre-downloaded volume. RunPod's worker-vllm has MODEL_NAME but no
+# first-class HF subfolder. Two options:
+#   1. Re-push merged weights as a top-level repo (e.g. `oduwairi/draper-r16-merged`).
+#   2. Use the `subfolder` mechanism by overriding the model loader. The vLLM
+#      engine accepts `--hf-overrides '{"subfolder":"merged"}'` and worker-vllm
+#      forwards any AsyncEngineArgs env var, so HF_OVERRIDES='{"subfolder":"merged"}'
+#      should work — verify on first apply.
+# We default to option 1 below; flip `model_name` to the subfolder repo if
+# you prefer option 2 and add `hf_overrides`.
+
+template:
+  name: draper-vllm
+  # Image is the upstream RunPod-maintained worker. Pinning to a release
+  # avoids surprises on redeploy.
+  image: runpod/worker-v1-vllm:v2.18.1stable-cuda12.1.0
+  container_disk_gb: 40  # vLLM image + ~16 GB Qwen3-8B weights + KV/swap headroom
+
+env:
+  # --- Model selection ------------------------------------------------------
+  # Subfolder path (option 2): point at the parent repo and let vLLM's
+  # AsyncEngineArgs.hf_overrides forward the `subfolder` kwarg to HF Hub.
+  # If the worker fails to find weights, fall back to re-pushing merged
+  # as a top-level repo (oduwairi/draper-r16-merged) and dropping HF_OVERRIDES.
+  MODEL_NAME: oduwairi/draper-qwen3-8b
+  HF_OVERRIDES: '{"subfolder":"merged"}'
+  OPENAI_SERVED_MODEL_NAME_OVERRIDE: draper-r16  # must match configs/eval.yaml config C
+
+  # --- vLLM engine args (mirror deploy/modal_vllm.py) -----------------------
+  MAX_MODEL_LEN: "16384"
+  DTYPE: bfloat16
+  GPU_MEMORY_UTILIZATION: "0.9"
+  ENFORCE_EAGER: "true"          # skip CUDA graph capture; saves cold-start
+  ENABLE_AUTO_TOOL_CHOICE: "true"
+  TOOL_CALL_PARSER: hermes
+
+  # --- Concurrency ----------------------------------------------------------
+  # Modal had max_inputs=64; RunPod splits this into per-worker concurrency
+  # plus an autoscaler. 30 is the worker-vllm default and a safe floor for L4;
+  # the 64-input parity is reached by letting the endpoint scale to 2 workers.
+  MAX_CONCURRENCY: "30"
+
+  # --- Secrets (filled at apply time from local env, not committed) ---------
+  # Defined here as null so the apply script knows to inject them.
+  HF_TOKEN: null
+  # The worker-vllm template doesn't expose a vLLM `--api-key` env directly.
+  # RunPod gates the /run + /openai/* paths on the workspace API key, so we
+  # rely on that. Drop `VLLM_API_KEY` from frontend/.env.local when cutting
+  # over — the OpenAI client should send `Authorization: Bearer <RUNPOD_API_KEY>`.
+
+endpoint:
+  name: draper-vllm
+  # GPU pool. RunPod takes pool IDs, not GPU display names. Map for 8B-friendly
+  # options (Apr 2026):
+  #   ADA_48_PRO   - L40S / L40 / RTX 6000 Ada    (48 GB, ~$0.86–1.10/hr)  **default**
+  #   AMPERE_48    - A40 / A6000                  (48 GB, ~$0.39–0.76/hr)  cheap fallback
+  #   AMPERE_80    - A100 80GB                    (80 GB, ~$1.89/hr)        overkill for 8B
+  #   ADA_24       - L4 / RTX 4090                (24 GB, ~$0.43/hr)        bandwidth-bound
+  #   HOPPER_141   - H100 / H200                  (141 GB, ~$2.79/hr)       overkill
+  # Comma-separate to widen the pool (better availability), e.g.
+  # "ADA_48_PRO,AMPERE_48". Prefix "-" to exclude a specific GPU type.
+  # ADA_48_PRO was throttled in US-WA-1 on first apply (RunPod said "supply
+  # is currently low"). Pairing it with AMPERE_48 (A40/A6000) gives the
+  # scheduler two pools to draw from, which kept latency in the same ballpark
+  # while solving capacity. Drop AMPERE_48 once L40S supply recovers.
+  gpu_ids: "ADA_48_PRO,AMPERE_48,AMPERE_80"
+  workers_min: 0       # scale to zero when idle (cold starts ~30–60s)
+  workers_max: 2       # parity with Modal's max_inputs=64 (2 × 30 = 60)
+  idle_timeout_seconds: 120
+  flashboot: true      # RunPod's snapshot-restore equivalent; ~5–10s faster cold starts

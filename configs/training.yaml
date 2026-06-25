@@ -1,0 +1,117 @@
+# QLoRA fine-tuning config for the copywriting model.
+# Loaded by draper.training.config.TrainingConfig.from_yaml().
+# Choices validated April 2026 — see docs/project/IMPLEMENTATION_PLAN.md and
+# the plan file ~/.claude/plans/aight-after-all-this-typed-lantern.md for the
+# rationale behind each non-default value.
+
+training:
+  # ---- Model -----------------------------------------------------------
+  # Dynamic-2.0 4-bit pre-quant for QLoRA. The plain unsloth/Qwen3-8B repo
+  # is fp16 instruct — wrong target for QLoRA.
+  base_model: unsloth/Qwen3-8B-unsloth-bnb-4bit
+  # Tiny model used by `train.py smoke` for laptop-side debugging.
+  smoke_base_model: unsloth/Qwen2.5-0.5B-Instruct
+  load_in_4bit: true
+  max_length: 4096                       # SFTConfig field; was max_seq_length pre-TRL-1.0
+
+  # ---- LoRA / PEFT -----------------------------------------------------
+  # PiSSA is broken on bnb-4bit (PEFT #1999). DoRA + rsLoRA is the strongest
+  # 2026 capability-preservation init we can stack with QLoRA.
+  # Run #003 (2026-05): r=16 → r=32 alongside dataset expansion (~2.4K → ~4K
+  # examples). Run #002 plateaued at eval=1.535 — structural (one-to-many) not
+  # capacity-bound, but DoRA r=32 ≈ vanilla LoRA r=64 in effective capacity
+  # (DoRA paper ablations) and the literature knee for matching FullFT on
+  # heterogeneous post-training sits at r=128–256 (Thinking Machines "LoRA
+  # Without Regret"). Doubling rank captures the lower half of that gain
+  # curve cheaply. ~24M → ~48M trainable params, memory and step-time barely
+  # move on a 4090.
+  lora_r: 32                             # was 16 in Run #002
+  lora_alpha: 64                         # alpha = 2*r, rsLoRA convention preserved
+  lora_dropout: 0.05
+  init_lora_weights: true                # default Kaiming; PiSSA dropped
+  use_rslora: true
+  use_dora: true
+  # Unsloth's get_peft_model wrapper iterates char-by-char on the
+  # PEFT-style "all-linear" sentinel — must pass the explicit list.
+  target_modules:
+    - q_proj
+    - k_proj
+    - v_proj
+    - o_proj
+    - gate_proj
+    - up_proj
+    - down_proj
+
+  # ---- Optimizer / schedule -------------------------------------------
+  learning_rate: 2.0e-4
+  num_train_epochs: 3
+  per_device_train_batch_size: 2
+  per_device_eval_batch_size: 2
+  gradient_accumulation_steps: 8         # effective batch 16
+  warmup_ratio: 0.03
+  lr_scheduler_type: cosine
+  weight_decay: 0.0
+  optim: adamw_8bit
+  bf16: true
+  seed: 42
+
+  # ---- SFT-specific ---------------------------------------------------
+  # packing + assistant_only_loss are mutually exclusive in current TRL
+  # (TRL #3728). Assistant masking matters more for chat-format SFT.
+  packing: false
+  # padding_free was suspected as part of Run #001's three-way interaction
+  # but local ablation (2026-04-30) showed it has no effect on train_loss.
+  # Safe to enable for the throughput win, but kept off pending FA2 retest
+  # (laptop uses xformers; cloud uses FA2 which has different padding-free
+  # paths in TRL).
+  padding_free: false
+  # use_liger_kernel: HARD OFF. Local ablation FT run (2026-04-30)
+  # reproduced the exact Run #001 collapse pattern (loss → ~0 by step 20)
+  # with this flag alone. A Pydantic validator in config.py blocks setting
+  # this True without DRAPER_ALLOW_LIGER=1 override.
+  use_liger_kernel: false
+  assistant_only_loss: true
+
+  # ---- Eval / checkpointing -------------------------------------------
+  # eval_loss is a diagnostic, not a stop signal. The real stop criterion
+  # is manual rubric judgment on held-out test examples (verification 8).
+  # early_stopping_patience here is just a runaway-cost safety net.
+  # load_best_model_at_end requires eval_strategy == save_strategy and
+  # eval_steps to be a multiple of save_steps (HF TrainingArguments
+  # validator). Step-level eval at 50 also surfaces Run #001-class bugs
+  # at step 50 instead of end-of-epoch (step 153).
+  eval_strategy: steps
+  eval_steps: 50
+  # Step-level checkpoints (was epoch-level): pod death between epochs cost
+  # us ~40 min worst-case. Every 50 steps = ~14 min recovery granularity at
+  # ~16-22s/step. save_total_limit=5 caps disk via auto-prune.
+  save_strategy: steps
+  save_steps: 50
+  save_total_limit: 5
+  # Per-step logging so the next loss collapse (if any) is visible at step 2,
+  # not step 10. Cheap — just more rows in trackio.
+  logging_steps: 1
+  load_best_model_at_end: true
+  metric_for_best_model: eval_loss
+  greater_is_better: false
+  early_stopping_patience: 2
+
+  # ---- Tracking -------------------------------------------------------
+  report_to: trackio
+  trackio_project: draper-copywriting
+
+  # ---- Paths ----------------------------------------------------------
+  dataset_dir: data/final
+  output_dir: outputs/qwen3-8b-copywriting
+  merged_dir: outputs/qwen3-8b-copywriting/merged
+
+  # ---- Smoke overrides ------------------------------------------------
+  # max_steps was 2 → 30 → 50: Run #001 collapsed between step 10 and 20;
+  # we want margin past that. batch_size bumped 1 → 2 because padding_free
+  # is a no-op at bs=1 (nothing to pack), so the bug we're hunting can't
+  # trigger. n_examples bumped to keep bs=2 fed for 50 steps.
+  smoke:
+    n_examples: 100
+    max_steps: 50
+    per_device_train_batch_size: 2
+    gradient_accumulation_steps: 1
